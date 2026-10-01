@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ทะเบียนกุฏิ วัดป่าอารยวังสาราม</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3efe4;--card:#fbf8f0;--ink:#2b2416;--mut:#7a6d55;--line:#d9cfb8;--sf:#8a3b12;--sf2:#f0dcc4;--ok:#3f6b3a;--bad:#a33;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1a13;--card:#27231a;--ink:#f1e9d6;--mut:#a89c82;--line:#41392a;--sf:#e59a5c;--sf2:#3b2e1d;--ok:#8fc383;--bad:#f08a8a}}
+:root[data-theme="dark"]{--bg:#1d1a13;--card:#27231a;--ink:#f1e9d6;--mut:#a89c82;--line:#41392a;--sf:#e59a5c;--sf2:#3b2e1d;--ok:#8fc383;--bad:#f08a8a}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Sarabun,"Noto Sans Thai",Tahoma,sans-serif}
+header{background:var(--sf);color:#fff8ea;padding:18px 16px}
+header h1{margin:0;font-size:1.5rem}header p{margin:2px 0 0;opacity:.85;font-size:.9rem}
+main{max-width:1100px;margin:0 auto;padding:14px}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;align-items:flex-start}
+.nav-drop{position:relative;display:inline-block}
+.nav-drop>button{min-width:7rem}
+.nav-drop .sub{
+  display:none;position:absolute;left:0;top:100%;z-index:50;
+  min-width:11rem;margin-top:2px;padding:4px;border-radius:8px;
+  background:var(--card);border:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.18)
+}
+.nav-drop.open .sub{display:flex;flex-direction:column;gap:2px}
+.nav-drop .sub button{text-align:left;width:100%;background:transparent;border-color:transparent}
+.nav-drop .sub button:hover,.nav-drop .sub button.on{background:var(--sf2);border-color:var(--line)}
+.nav-drop .sub button.on{color:var(--sf);font-weight:600}
+button,select,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:1px solid var(--line);background:var(--card);padding:6px 12px;border-radius:6px}
+button:hover{border-color:var(--sf)}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--sf);outline-offset:1px}
+button.on,button.pri{background:var(--sf);color:#fff8ea;border-color:var(--sf)}
+button.sm{padding:2px 8px;font-size:.85rem;background:#fbf8f0!important;color:#2b2416!important;border:1px solid #d9cfb8!important}
+button.sm:hover{border-color:#8a3b12!important;background:#f0e6d4!important}
+button.del{color:#a33!important}
+button.sm.del{color:#a33!important;background:#fbf8f0!important}
+input,select,textarea{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:6px 8px;width:100%}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.stats div{background:var(--sf2);padding:6px 14px;border-radius:6px}.stats b{font-size:1.3rem;margin-right:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.room{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--ok);padding:12px;border-radius:6px}
+.room.full{border-left-color:var(--sf)}.room.over{border-left-color:var(--bad)}.room.un{border-left-color:var(--mut);border-style:dashed}
+.room h3{margin:0;display:flex;justify-content:space-between;gap:8px;font-size:1.1rem}
+.cap{font-size:.85rem;color:var(--mut);font-weight:400}
+.g{display:flex;justify-content:space-between;align-items:center;gap:6px;padding:6px 0;border-top:1px solid var(--line)}
+.g small{display:block;color:var(--mut)}
+.empty{color:var(--mut);padding:8px 0;font-size:.9rem}
+.tools{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px;align-items:center}
+table{width:100%;border-collapse:collapse;background:var(--card)}
+td,th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:.95rem}
+.scroll{overflow-x:auto}
+pre{white-space:pre-wrap;background:var(--card);border:1px solid var(--line);padding:14px;border-radius:6px;font:inherit}
+dialog{border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:min(520px,94vw);padding:16px;max-height:90vh;overflow-y:auto}
+dialog::backdrop{background:#0008}label{display:block;margin:8px 0 2px;font-size:.9rem;color:var(--mut)}
+.row{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+.hint{font-size:.85rem;color:var(--mut)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.form-grid .full{grid-column:1/-1}
+.vassa-head{text-align:center;margin-bottom:12px}
+.vassa-head h2{margin:0 0 4px;font-size:1.25rem}
+.vassa-head p{margin:0;color:#555}
+/* ตารางจำพรรษาบังคับโทนสว่างเสมอ (ทั้งหน้าจอ / พิมพ์ / PDF) */
+#vassa-print{background:#fff!important;color:#111!important;padding:12px;border-radius:6px;border:1px solid #d9cfb8}
+#vassa-print .vassa-head h2{color:#111!important}
+#vassa-print .vassa-head p{color:#444!important}
+.vassa-table{background:#fff!important;color:#111!important;border-collapse:collapse;width:100%;table-layout:fixed}
+.vassa-table th,.vassa-table td{
+  border:1px solid #b8ae96!important;
+  padding:8px 5px!important;
+  font-size:.85rem;
+  color:#111!important;
+  background:#fff!important;
+  vertical-align:middle!important;
+  line-height:1.35!important;
+  text-align:center;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  white-space:normal;
+  overflow:hidden;
+}
+.vassa-table th{background:#f0e6d4!important;font-weight:600;color:#2b2416!important;white-space:normal}
+.vassa-table tbody tr:nth-child(even) td{background:#faf7f0!important}
+.vassa-table td.left{text-align:left}
+.meta-box{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px;margin-bottom:12px}
+.meta-box .form-grid{margin-top:4px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}
+.chip{border:1px solid var(--line);background:var(--card);padding:4px 12px;border-radius:999px;font-size:.9rem;cursor:pointer}
+.chip.on{background:var(--sf);color:#fff8ea;border-color:var(--sf)}
+.chip b{margin-left:4px}
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.dash-card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;border-top:4px solid var(--sf)}
+.dash-card h3{margin:0 0 8px;font-size:1.05rem}
+.dash-card .num{font-size:1.6rem;font-weight:700;color:var(--sf)}
+.alert-box{background:#fff3cd;border:1px solid #e6c86a;color:#5c4a12;padding:10px 12px;border-radius:8px;margin-bottom:12px}
+.alert-box ul{margin:6px 0 0;padding-left:1.2rem}
+.bar-row{display:flex;align-items:center;gap:8px;margin:4px 0}
+.bar-row .lab{min-width:7rem;font-size:.9rem}
+.bar-row .bar{flex:1;height:10px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar-row .bar i{display:block;height:100%;background:var(--sf)}
+.bar-row .n{min-width:2rem;text-align:right;font-size:.9rem}
+.hist{font-size:.85rem;color:var(--mut);max-height:120px;overflow:auto;border:1px solid var(--line);border-radius:6px;padding:6px 8px;background:var(--card)}
+.save-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px;padding:8px 12px;background:var(--card);border:1px solid var(--line);border-radius:8px}
+.save-bar #saveStatus{font-size:.9rem;color:var(--mut);flex:1;min-width:8rem}
+button.save-btn{background:var(--ok)!important;color:#fff!important;border-color:var(--ok)!important;font-weight:600;padding:8px 16px}
+button.save-btn:hover{filter:brightness(1.05)}
+@media print{.no-print-board .tools,.no-print-board .alert-box,.save-bar{display:none!important}}
+@media print{
+  @page{size:A4 landscape;margin:1cm}
+  header,nav,.tools,button,.stats,.no-print{display:none!important}
+  body{background:#fff;color:#000;font-size:12pt}
+  main{max-width:none;padding:0;margin:0}
+  .vassa-head h2{font-size:16pt}
+  #vassa-print{border:none!important;padding:0!important}
+  .vassa-table{page-break-inside:auto;width:100%!important}
+  .vassa-table thead{display:table-header-group}
+  .vassa-table tr{page-break-inside:avoid;break-inside:avoid}
+  .vassa-table{table-layout:fixed!important}
+  .vassa-table th,.vassa-table td{border:1px solid #333;padding:5px 3px;font-size:9pt;vertical-align:middle!important;line-height:1.3!important;overflow-wrap:anywhere;word-break:break-word;white-space:normal;overflow:hidden}
+  .vassa-table th{background:#eee!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  dialog{display:none!important}
+}
+</style>
+</head>
+<body>
+<header id="hdr"><h1 id="hdr-title">ทะเบียนกุฏิ วัดป่าอารยวังสาราม</h1><p id="hdr-sub">บันทึกพระสงฆ์ผู้มาพัก จัดกุฏิ จำพรรษา และสร้างข้อความแจ้ง</p></header>
+<main>
+<nav id="tabs"></nav>
+<div class="stats" id="stats"></div>
+<div id="view"></div>
+</main>
+<dialog id="dlg"></dialog>
+<script>
+const KEY='arayawang_kuti_v1';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Math.random().toString(36).slice(2,9);
+const THD='๐๑๒๓๔๕๖๗๘๙';
+const toThaiNum=s=>String(s??'').replace(/[0-9]/g,d=>THD[+d]);
+const toArNum=s=>String(s??'').replace(/[๐-๙]/g,d=>String(THD.indexOf(d)));
+const thNum=n=>toThaiNum(n);
+const thDate=d=>d?toThaiNum(new Date(d+'T00:00:00').toLocaleDateString('th-TH',{day:'numeric',month:'long',year:'numeric'})):'';
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const pansaVal=g=>+(toArNum(g.pansa||0)||0);
+const byPansa=(a,b)=>pansaVal(b)-pansaVal(a)||(a.name||a.first||'').localeCompare(b.name||b.first||'','th');
+const byVassaPansa=(a,b)=>pansaVal(b)-pansaVal(a)||(a.first||'').localeCompare(b.first||'','th');
+
+function seedVassaYear(year,place){
+ return {
+  year:String(year||'2569'),
+  place:place||'วัดป่าอารยวังสาราม',
+  monks:[
+   {id:uid(),first:'พระครูสังฆรักษ์อรัญ',last:'พันธ์ขาว',chaya:'ญาณมโย',age:'42',pansa:'18',vassaWat:place||'วัดป่าอารยวังสาราม',ordDate:'24 กรกฎาคม 2551',ordWat:'วัดล้านนาญาณสังวราราม',ordAmp:'จอมทอง',province:'เชียงใหม่',status:'ปกติ'},
+   {id:uid(),first:'พระพีระสันต์',last:'พันธ์ขาว',chaya:'ธีรวโร',age:'41',pansa:'6',vassaWat:place||'วัดป่าอารยวังสาราม',ordDate:'22 กุมภาพันธ์ 2562',ordWat:'วัดป่าพุทธพจน์หริภุญไชย',ordAmp:'เมือง',province:'ลำพูน',status:'ปกติ'},
+   {id:uid(),first:'พระสุโชติ',last:'โคกศรี',chaya:'จันทโชโต',age:'68',pansa:'5',vassaWat:place||'วัดป่าอารยวังสาราม',ordDate:'11 กรกฎาคม 2564',ordWat:'วัดป่าพุทธพจน์หริภุญไชย',ordAmp:'เมือง',province:'ลำพูน',status:'ปกติ'},
+   {id:uid(),first:'พระถาวร',last:'ทาสี',chaya:'ถิรสีโล',age:'60',pansa:'1',vassaWat:place||'วัดป่าอารยวังสาราม',ordDate:'26 กรกฎาคม 2568',ordWat:'วัดป่าพุทธพจน์หริภุญไชย',ordAmp:'เมือง',province:'ลำพูน',status:'ปกติ'}
+  ]
+ };
+}
+function seedVassa(){
+ const y=seedVassaYear('2569');
+ return {current:y.year,records:{[y.year]:y}};
+}
+function migrateVassa(v){
+ if(!v)return seedVassa();
+ if(v.records&&typeof v.records==='object'){
+  Object.values(v.records).forEach(r=>{
+   if(!Array.isArray(r.monks))r.monks=[];
+   r.monks.forEach(m=>normalizeMonk(m,r.place||''));
+  });
+  if(!v.current||!v.records[v.current]){
+   const keys=Object.keys(v.records).sort((a,b)=>+b-+a);
+   v.current=keys[0]||'2569';
+   if(!v.records[v.current])v.records[v.current]=seedVassaYear(v.current);
+  }
+  return v;
+ }
+ // รูปแบบเก่า: place/year/monks เดี่ยว → ย้ายเข้า records
+ const year=String(v.year||'2569');
+ const rec={year,place:v.place||'วัดป่าอารยวังสาราม',monks:Array.isArray(v.monks)?v.monks:[]};
+ rec.monks.forEach(m=>normalizeMonk(m,rec.place||''));
+ return {current:year,records:{[year]:rec}};
+}
+function normalizeMonk(m,place){
+ if(m.vassaWat===undefined)m.vassaWat=place||'';
+ if(!m.status)m.status='ปกติ';
+ if(m.birth===undefined)m.birth='';
+ if(m.monkId===undefined)m.monkId='';
+ if(m.phone===undefined)m.phone='';
+ if(m.note===undefined)m.note='';
+ if(!Array.isArray(m.statusHistory))m.statusHistory=[];
+ return m;
+}
+const VASSA_STATUS=['ปกติ','ลาสิกขา','ย้ายสังกัด','มรณะภาพ'];
+function statusLabel(s){return VASSA_STATUS.includes(s)?s:'ปกติ'}
+function statusCell(s){
+ const v=statusLabel(s);
+ const color=v==='ปกติ'?'#3f6b3a':v==='ลาสิกขา'?'#a33':v==='ย้ายสังกัด'?'#8a3b12':'#555';
+ return `<span style="color:${color};font-weight:600">${esc(v)}</span>`;
+}
+function statusCounts(list){
+ const c={ทั้งหมด:list.length};
+ VASSA_STATUS.forEach(s=>c[s]=0);
+ list.forEach(m=>{const s=statusLabel(m.status);c[s]=(c[s]||0)+1});
+ return c;
+}
+function downloadCsv(filename,rows){
+ const bom='\ufeff';
+ const csv=rows.map(r=>r.map(c=>{
+  const s=String(c??'');
+  return /["\n,]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;
+ }).join(',')).join('\n');
+ const blob=new Blob([bom+csv],{type:'text/csv;charset=utf-8'});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement('a');a.href=url;a.download=filename;
+ document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+function daysUntil(dateStr){
+ if(!dateStr)return null;
+ const t=new Date(dateStr+'T00:00:00');
+ if(isNaN(t))return null;
+ const n=new Date();n.setHours(0,0,0,0);
+ return Math.round((t-n)/86400000);
+}
+function vCur(){
+ if(!S.vassa.records[S.vassa.current]){
+  S.vassa.records[S.vassa.current]=seedVassaYear(S.vassa.current,S.vassa.records[Object.keys(S.vassa.records)[0]]?.place||'วัดป่าอารยวังสาราม');
+  S.vassa.records[S.vassa.current].monks=[];
+ }
+ return S.vassa.records[S.vassa.current];
+}
+function vYearList(){
+ return Object.keys(S.vassa.records).sort((a,b)=>+b-+a);
+}
+
+function seedTemple(name){
+ const r=[{id:'r1',name:'กุฏิรวม 1',cap:2},{id:'r2',name:'กุฏิรวม 2',cap:2},{id:'r3',name:'กุฏิ 2',cap:1},{id:'r4',name:'เรือนพระชาย',cap:6}];
+ const g=(n,room,pansa)=>({id:uid(),name:n,room,pansa:pansa||'',arrive:'2026-10-03',depart:'',note:'',out:false});
+ const isDefault=!name||name==='วัดป่าอารยวังสาราม';
+ return {
+  id:uid(),
+  name:name||'วัดป่าอารยวังสาราม',
+  branch:isDefault?'สาขาอารยวังสาราม':'',
+  notifier:'พระอัฐพล ฐิตภทฺโท',
+  rooms:isDefault?r:[{id:uid(),name:'กุฏิ 1',cap:2}],
+  guests:isDefault?[
+   g('พระครูสังฆรักษ์อรัญ ญาณมโย','r1'),g('พระดิศพันธุ์ วํสธมฺโม','r1'),
+   g('พระครูปลัดวีรศักดิ์ สีลธโร','r2'),g('พระครูใบฎีกา ปิยธิป ปิยธมฺโม','r2'),
+   g('พระอุดร อธิวโร','r3'),
+   g('พระสหรัฐ ปญฺญาวฑฺฒโก','r4'),g('พระวีรวัฒน์ สุทฺธิสาโร','r4'),g('พระถาวร ทาสี ถิรสีโล','r4')
+  ]:[]
+ };
+}
+function seed(){
+ const t=seedTemple('วัดป่าอารยวังสาราม');
+ return {currentTemple:t.id,temples:{[t.id]:t},vassa:seedVassa()};
+}
+function migrateTemples(data){
+ if(!data)return seed();
+ // มีโครงสร้าง temples แล้ว
+ if(data.temples&&typeof data.temples==='object'){
+  Object.values(data.temples).forEach(t=>{
+   if(!Array.isArray(t.rooms))t.rooms=[];
+   if(!Array.isArray(t.guests))t.guests=[];
+   if(t.branch===undefined)t.branch='';
+   t.guests.forEach(g=>{
+    if(g.pansa===undefined)g.pansa='';
+    if(!Array.isArray(g.history))g.history=[];
+   });
+   if(!t.name)t.name='วัดไม่ระบุชื่อ';
+   if(!t.id)t.id=uid();
+  });
+  if(!data.currentTemple||!data.temples[data.currentTemple]){
+   const keys=Object.keys(data.temples);
+   data.currentTemple=keys[0]||null;
+   if(!data.currentTemple){
+    const t=seedTemple('วัดป่าอารยวังสาราม');
+    data.temples[t.id]=t;data.currentTemple=t.id;
+   }
+  }
+  return data;
+ }
+ // รูปแบบเก่า: rooms/guests ระดับบน
+ const t={
+  id:uid(),
+  name:'วัดป่าอารยวังสาราม',
+  notifier:data.notifier||'พระอัฐพล ฐิตภทฺโท',
+  rooms:Array.isArray(data.rooms)?data.rooms:[],
+  guests:Array.isArray(data.guests)?data.guests:[]
+ };
+ t.guests.forEach(g=>{if(g.pansa===undefined)g.pansa=''});
+ return {currentTemple:t.id,temples:{[t.id]:t},vassa:data.vassa||seedVassa()};
+}
+let S;
+// ถ้าเปิดจากไฟล์ HTML ที่ส่งออกมา จะมีข้อมูลฝังไว้ใน __PORTABLE_DATA__
+if(typeof window.__PORTABLE_DATA__!=='undefined'&&window.__PORTABLE_DATA__){
+ try{S=window.__PORTABLE_DATA__;localStorage.setItem(KEY,JSON.stringify(S))}catch(e){S=window.__PORTABLE_DATA__}
+}else{
+ try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+}
+S=migrateTemples(S);
+S.vassa=migrateVassa(S.vassa);
+let tab='board',q='',vq='',vsFilter='ทั้งหมด',vsWatFilter='',crossQ='';
+let lastSavedAt=null;
+const save=()=>{
+ try{
+  localStorage.setItem(KEY,JSON.stringify(S));
+  lastSavedAt=new Date();
+  updateSaveStatus();
+ }catch(e){console.error(e)}
+};
+function updateSaveStatus(){
+ const el=document.getElementById('saveStatus');
+ if(!el)return;
+ if(lastSavedAt){
+  const t=lastSavedAt.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  el.textContent='บันทึกล่าสุด '+t;
+  el.style.color='var(--ok)';
+ }else{
+  el.textContent='กดปุ่มบันทึกเมื่อแก้ไขเสร็จ';
+  el.style.color='var(--mut)';
+ }
+}
+function saveAll(){
+ try{
+  localStorage.setItem(KEY,JSON.stringify(S));
+  lastSavedAt=new Date();
+  updateSaveStatus();
+  const t=lastSavedAt.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  alert('บันทึกข้อมูลทั้งหมดเรียบร้อยแล้ว\nเวลา '+t+'\n\nข้อมูลถูกเก็บในเบราว์เซอร์เครื่องนี้');
+ }catch(e){
+  alert('บันทึกไม่สำเร็จ: '+(e.message||e));
+ }
+}
+function tCur(){
+ if(!S.temples[S.currentTemple]){
+  const keys=Object.keys(S.temples);
+  if(keys.length)S.currentTemple=keys[0];
+  else{const t=seedTemple('วัดป่าอารยวังสาราม');S.temples[t.id]=t;S.currentTemple=t.id}
+ }
+ return S.temples[S.currentTemple];
+}
+function tList(){return Object.values(S.temples).sort((a,b)=>(a.name||'').localeCompare(b.name||'','th'))}
+const rooms=()=>tCur().rooms;
+const guests=()=>tCur().guests;
+const cur=()=>guests().filter(g=>!g.out).sort(byPansa);
+const inRoom=id=>cur().filter(g=>g.room===id);
+const vMonks=()=>[...vCur().monks].sort(byVassaPansa);
+function switchTemple(id){if(S.temples[id]){S.currentTemple=id;q='';save();render()}}
+function addTempleDlg(){
+ $('#dlg').innerHTML=`<h3>เพิ่มวัดใหม่</h3>
+ <label>ชื่อวัด</label><input id="tn" placeholder="เช่น วัดป่า…">
+ <p class="hint">วัดใหม่จะมีกุฏิเริ่มต้น 1 หลัง — เพิ่ม/แก้ไขกุฏิและรายชื่อได้แยกจากวัดอื่น</p>
+ <div class="row"><button onclick="$('#dlg').close()">ยกเลิก</button><button class="pri" onclick="addTemple()">บันทึก</button></div>`;
+ $('#dlg').showModal();setTimeout(()=>$('#tn')?.focus(),50);
+}
+function addTemple(){
+ const name=$('#tn').value.trim();
+ if(!name){$('#tn').focus();return}
+ if(tList().some(t=>t.name===name)){alert('มีชื่อวัดนี้อยู่แล้ว');return}
+ const t=seedTemple(name);
+ // วัดใหม่ไม่ใช้ seed ตัวอย่าง
+ t.rooms=[{id:uid(),name:'กุฏิ 1',cap:2}];
+ t.guests=[];
+ t.notifier='';
+ S.temples[t.id]=t;
+ S.currentTemple=t.id;
+ save();$('#dlg').close();render();
+}
+function renameTempleDlg(){
+ const t=tCur();
+ $('#dlg').innerHTML=`<h3>แก้ชื่อวัด / สาขา</h3>
+ <label>ชื่อวัด</label><input id="tn" value="${esc(t.name)}">
+ <label>สาขา / เขตปกครอง</label><input id="tb" value="${esc(t.branch||'')}" placeholder="เช่น สาขาอารยวังสาราม · ใต้สังกัด…">
+ <div class="row"><button onclick="$('#dlg').close()">ยกเลิก</button><button class="pri" onclick="renameTemple()">บันทึก</button></div>`;
+ $('#dlg').showModal();
+}
+function renameTemple(){
+ const name=$('#tn').value.trim();
+ if(!name){$('#tn').focus();return}
+ tCur().name=name;
+ tCur().branch=($('#tb')?.value||'').trim();
+ save();$('#dlg').close();render();
+}
+function delTemple(){
+ const list=tList();
+ if(list.length<=1){alert('ต้องเหลืออย่างน้อย 1 วัด');return}
+ const t=tCur();
+ if(!confirm('ลบวัด «'+t.name+'» พร้อมกุฏิและรายชื่อทั้งหมดของวัดนี้?'))return;
+ delete S.temples[t.id];
+ S.currentTemple=Object.keys(S.temples)[0];
+ save();render();
+}
+
+function goTab(k){tab=k;render()}
+function toggleKutiMenu(e){
+ e.stopPropagation();
+ const d=e.currentTarget.closest('.nav-drop');
+ const open=d.classList.contains('open');
+ document.querySelectorAll('.nav-drop.open').forEach(x=>x.classList.remove('open'));
+ if(!open)d.classList.add('open');
+}
+function closeKutiMenus(){document.querySelectorAll('.nav-drop.open').forEach(x=>x.classList.remove('open'))}
+document.addEventListener('click',closeKutiMenus);
+function render(){
+ const kutiOn=tab==='board'||tab==='list'||tab==='msg';
+ const sub=[['board','ผังกุฏิ'],['list','รายชื่อทั้งหมด'],['msg','ข้อความแจ้ง']];
+ $('#tabs').innerHTML=`
+  <button class="${tab==='overview'?'on':''}" onclick="goTab('overview')">สรุปภาพรวม</button>
+  <div class="nav-drop">
+   <button class="${kutiOn?'on':''}" onclick="toggleKutiMenu(event)">ผังกุฏิ ▾</button>
+   <div class="sub">
+    ${sub.map(([k,l])=>`<button class="${tab===k?'on':''}" onclick="goTab('${k}')">${l}</button>`).join('')}
+   </div>
+  </div>
+  <button class="${tab==='vassa'?'on':''}" onclick="goTab('vassa')">จำพรรษา</button>
+  <button class="${tab==='report'?'on':''}" onclick="goTab('report')">รายงาน</button>
+  <button class="${tab==='data'?'on':''}" onclick="goTab('data')">สำรองข้อมูล</button>
+  <button class="save-btn" onclick="saveAll()" title="บันทึกข้อมูลทั้งหมดลงเบราว์เซอร์">💾 บันทึกข้อมูลทั้งหมด</button>
+  <span id="saveStatus" class="hint"></span>`;
+ setTimeout(updateSaveStatus,0);
+ if(tab==='vassa'){
+  const r=vCur();
+  const place=r.place||'';
+  const year=r.year||S.vassa.current||'';
+  $('#hdr-title').textContent='ทะเบียนพระประจำพรรษา';
+  $('#hdr-sub').textContent=(place||'ยังไม่ได้ตั้งชื่อวัดที่จำพรรษา')+(year?' · '+toThaiNum(year):'');
+  document.title='ทะเบียนพระประจำพรรษา'+(place?' '+place:'')+(year?' '+year:'');
+  const n=r.monks.length;
+  const sc=statusCounts(r.monks||[]);
+  $('#stats').innerHTML=`<div><b>${toThaiNum(n)}</b>รูปทั้งหมด</div>
+   <div><b>${toThaiNum(sc['ปกติ']||0)}</b>ปกติ</div>
+   <div><b>${toThaiNum(sc['ลาสิกขา']||0)}</b>ลาสิกขา</div>
+   <div><b>${toThaiNum(sc['ย้ายสังกัด']||0)}</b>ย้ายสังกัด</div>
+   <div><b>${toThaiNum(sc['มรณะภาพ']||0)}</b>มรณะภาพ</div>`;
+ }else if(tab==='overview'||tab==='report'){
+  $('#hdr-title').textContent=tab==='overview'?'สรุปภาพรวมทุกวัด':'รายงานและสถิติ';
+  $('#hdr-sub').textContent='ภาพรวมกุฏิ · จำพรรษา · สาขา';
+  document.title=$('#hdr-title').textContent;
+  const allG=tList().reduce((a,t)=>a+(t.guests||[]).filter(g=>!g.out).length,0);
+  const allCap=tList().reduce((a,t)=>a+(t.rooms||[]).reduce((x,r)=>x+r.cap,0),0);
+  $('#stats').innerHTML=`<div><b>${toThaiNum(tList().length)}</b>วัด</div><div><b>${toThaiNum(allG)}</b>รูปที่พัก</div><div><b>${toThaiNum(Math.max(allCap-allG,0))}</b>ที่ว่างรวม</div><div><b>${toThaiNum(vYearList().length)}</b>ปีจำพรรษา</div>`;
+ }else{
+  const tn=tCur().name||'วัด';
+  $('#hdr-title').textContent='ทะเบียนกุฏิ '+tn;
+  $('#hdr-sub').textContent=(tCur().branch?tCur().branch+' · ':'')+'บันทึกพระสงฆ์ผู้มาพัก จัดกุฏิ';
+  document.title='ทะเบียนกุฏิ '+tn;
+  const c=cur(),un=c.filter(g=>!rooms().some(r=>r.id===g.room)).length;
+  const cap=rooms().reduce((a,r)=>a+r.cap,0);
+  const soon=c.filter(g=>{const d=daysUntil(g.depart);return d!==null&&d>=0&&d<=7}).length;
+  $('#stats').innerHTML=`<div><b>${toThaiNum(c.length)}</b>รูปที่พักอยู่</div><div><b>${toThaiNum(Math.max(cap-c.length+un,0))}</b>ที่ว่างรวม</div><div><b>${toThaiNum(rooms().length)}</b>กุฏิ/เรือน</div>`+(soon?`<div style="background:#e6c86a;color:#5c4a12"><b>${toThaiNum(soon)}</b>ใกล้ครบกำหนด ๗ วัน</div>`:'')+(un?`<div style="background:var(--bad);color:#fff"><b>${toThaiNum(un)}</b>ยังไม่ได้จัดกุฏิ</div>`:'');
+ }
+ ({board,list,vassa,msg,data,overview,report})[tab]();
+}
+
+function templeBarHtml(){
+ const opts=tList().map(t=>`<option value="${t.id}" ${t.id===S.currentTemple?'selected':''}>${esc(t.name)}${t.branch?' · '+esc(t.branch):''} (${toThaiNum((t.guests||[]).filter(g=>!g.out).length)} รูป)</option>`).join('');
+ return `<div class="tools no-print">
+  <label style="margin:0;color:inherit">เลือกวัด</label>
+  <select id="templeSel" style="width:auto;min-width:220px" onchange="switchTemple(this.value)">${opts}</select>
+  <button onclick="addTempleDlg()">+ เพิ่มวัด</button>
+  <button onclick="renameTempleDlg()">แก้ชื่อ/สาขา</button>
+  <button class="del" onclick="delTemple()" ${tList().length<=1?'disabled':''}>ลบวัดนี้</button>
+ </div>`;
+}
+function board(){
+ const roomOpts=rooms().map(r=>`<option value="${r.id}">${esc(r.name)}</option>`).join('');
+ const gi=g=>{
+  const d=daysUntil(g.depart);
+  const soon=d!==null&&d>=0&&d<=7;
+  return `<div class="g"><div>${esc(g.name)}${g.pansa!==''&&g.pansa!=null?' <span class="cap">('+toThaiNum(g.pansa)+' พรรษา)</span>':''}<small>${g.arrive?'เข้าพัก '+thDate(g.arrive):''}${g.depart?' · ออก '+thDate(g.depart):''}${soon?' · <b style="color:#a33">อีก '+toThaiNum(d)+' วัน</b>':''}${g.note?' · '+esc(g.note):''}</small></div>
+  <div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end">
+   <select class="sm" style="width:auto;max-width:9rem;padding:2px 4px" onchange="quickMove('${g.id}',this.value);this.value=''" title="ย้ายกุฏิ">
+    <option value="">ย้าย…</option>${rooms().filter(r=>r.id!==g.room).map(r=>`<option value="${r.id}">${esc(r.name)}</option>`).join('')}
+   </select>
+   <button class="sm" onclick="guestDlg('${g.id}')">แก้ไข</button>
+   <button class="sm" onclick="checkout('${g.id}')">ออกจากวัด</button>
+  </div></div>`;
+ };
+ const soonList=cur().filter(g=>{const d=daysUntil(g.depart);return d!==null&&d>=0&&d<=7}).sort((a,b)=>daysUntil(a.depart)-daysUntil(b.depart));
+ let h=templeBarHtml()+`<div class="tools no-print">
+  <button class="pri" onclick="guestDlg()">+ เพิ่มพระสงฆ์</button>
+  <button onclick="roomDlg()">+ เพิ่มกุฏิ</button>
+  <button onclick="window.print()">พิมพ์ผังกุฏิ</button>
+ </div>`;
+ if(soonList.length){
+  h+=`<div class="alert-box no-print"><b>ใกล้ครบกำหนดออกใน ๗ วัน (${toThaiNum(soonList.length)} รูป)</b><ul>
+   ${soonList.map(g=>`<li>${esc(g.name)} — ออก ${thDate(g.depart)} (อีก ${toThaiNum(daysUntil(g.depart))} วัน)${g.room?' · '+(rooms().find(r=>r.id===g.room)||{}).name||'':''}</li>`).join('')}
+  </ul></div>`;
+ }
+ h+=`<div class="grid" id="board-print">`;
+ const unl=cur().filter(g=>!rooms().some(r=>r.id===g.room));
+ if(unl.length)h+=`<div class="room un"><h3>ยังไม่ได้จัดกุฏิ</h3>${unl.map(gi).join('')}</div>`;
+ rooms().forEach(r=>{const o=inRoom(r.id),cl=o.length>r.cap?'over':o.length===r.cap?'full':'';
+  h+=`<div class="room ${cl}"><h3><span>🏠 ${esc(r.name)}</span><span class="cap">${toThaiNum(o.length)}/${toThaiNum(r.cap)} รูป</span></h3>
+  ${o.length?o.map(gi).join(''):'<div class="empty">ว่าง</div>'}
+  <div class="row no-print" style="justify-content:space-between;margin-top:8px"><button class="sm" onclick="roomDlg('${r.id}')">แก้ไขกุฏิ</button>${o.length>r.cap?'<span style="color:var(--bad)" class="hint">เกินจำนวนที่รับได้</span>':''}</div></div>`});
+ $('#view').innerHTML=h+'</div>';
+}
+function quickMove(gid,roomId){
+ if(!roomId)return;
+ const g=guests().find(x=>x.id===gid);
+ if(!g)return;
+ g.room=roomId;save();render();
+}
+
+function list(){
+ const rn=id=>(rooms().find(r=>r.id===id)||{}).name||'—';
+ const f=guests().filter(g=>!q||(g.name+rn(g.room)+g.note+(g.pansa??'')).includes(q)).sort(byPansa);
+ $('#view').innerHTML=templeBarHtml()+`<div class="tools"><input id="qi" placeholder="ค้นหาชื่อ / กุฏิ / พรรษา" value="${esc(q)}" style="max-width:260px" autocomplete="off"><button class="pri" onclick="guestDlg()">+ เพิ่มพระสงฆ์</button></div>
+ <div class="scroll"><table><tr><th>ชื่อ</th><th>พรรษา</th><th>กุฏิ</th><th>เข้าพัก</th><th>ออก</th><th>สถานะ</th><th></th></tr>
+ <tbody id="list-tbody">${listRowsHtml(f,rn)}</tbody></table></div>`;
+ const qi=$('#qi');
+ if(qi){
+  let composing=false;
+  qi.addEventListener('compositionstart',()=>{composing=true});
+  qi.addEventListener('compositionend',e=>{composing=false;q=e.target.value;refreshListTbody()});
+  qi.addEventListener('input',e=>{if(composing)return;q=e.target.value;refreshListTbody()});
+ }
+}
+function listRowsHtml(f,rn){
+ rn=rn||(id=>(rooms().find(r=>r.id===id)||{}).name||'—');
+ if(!f.length)return '<tr><td colspan="7" class="empty">ยังไม่มีรายการ</td></tr>';
+ return f.map(g=>`<tr><td>${esc(g.name)}<div class="hint">${esc(g.note)}</div></td><td>${g.pansa!==''&&g.pansa!=null?toThaiNum(g.pansa):'—'}</td><td>${g.out?'—':esc(rn(g.room))}</td><td>${thDate(g.arrive)}</td><td>${thDate(g.depart)}</td><td>${g.out?'ออกแล้ว':'พักอยู่'}</td>
+ <td style="white-space:nowrap"><button class="sm" onclick="guestDlg('${g.id}')">แก้ไข</button> ${g.out?`<button class="sm" onclick="checkin('${g.id}')">กลับเข้าพัก</button>`:''} <button class="sm del" onclick="delG('${g.id}')">ลบ</button></td></tr>`).join('');
+}
+function refreshListTbody(){
+ const tb=$('#list-tbody');
+ if(!tb)return;
+ const rn=id=>(rooms().find(r=>r.id===id)||{}).name||'—';
+ const f=guests().filter(g=>!q||(g.name+rn(g.room)+g.note+(g.pansa??'')).includes(q)).sort(byPansa);
+ tb.innerHTML=listRowsHtml(f,rn);
+}
+
+function matchVassaMonk(x,q){
+ if(!q)return true;
+ const qq=String(q).trim().toLowerCase();
+ if(!qq)return true;
+ const s=[x.first,x.last,x.chaya,x.vassaWat,x.province,x.ordWat,x.status,x.monkId,x.phone,x.note]
+  .map(v=>String(v??'').toLowerCase()).join(' ');
+ return s.includes(qq);
+}
+function vassaWatKey(x,place){
+ return String(x.vassaWat||x._place||place||'').trim()||'(ไม่ระบุวัดที่จำพรรษา)';
+}
+function vassaWatList(yearMonks,place){
+ const map={};
+ (yearMonks||[]).forEach(m=>{
+  const k=vassaWatKey(m,place);
+  if(!map[k])map[k]=0;
+  map[k]++;
+ });
+ return Object.entries(map).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'th'));
+}
+function searchVassaMonks(){
+ const q=String(vq||'').trim();
+ const r=vCur();
+ const place=r.place||'';
+ let list;
+ if(!q){
+  list=vMonks().map(x=>({...x,_year:r.year||S.vassa.current,_place:place}));
+ }else{
+  list=[];
+  vYearList().forEach(y=>{
+   const rec=S.vassa.records[y];
+   if(!rec||!rec.monks)return;
+   rec.monks.forEach(x=>{
+    if(matchVassaMonk(x,q))list.push({...x,_year:y,_place:rec.place||''});
+   });
+  });
+  list.sort(byVassaPansa);
+ }
+ if(vsFilter&&vsFilter!=='ทั้งหมด')list=list.filter(x=>statusLabel(x.status)===vsFilter);
+ // กรองเฉพาะวัดที่จำพรรษา (ไม่ใช่วัดบรรพชา)
+ if(vsWatFilter)list=list.filter(x=>vassaWatKey(x,place)===vsWatFilter);
+ return list;
+}
+function setVsFilter(f){vsFilter=f;refreshVassaTbody();document.querySelectorAll('.chip[data-st]').forEach(el=>el.classList.toggle('on',el.dataset.st===vsFilter))}
+function setVsWatFilter(w){vsWatFilter=w||'';vassa()}
+function vassa(){
+ const r=vCur();
+ const place=r.place||'';
+ const yearMonks=vMonks();
+ const watList=vassaWatList(yearMonks,place);
+ if(vsWatFilter&&!watList.some(([k])=>k===vsWatFilter))vsWatFilter='';
+ const baseList=(()=>{
+  let list=yearMonks.slice();
+  if(vsWatFilter)list=list.filter(x=>vassaWatKey(x,place)===vsWatFilter);
+  const q=String(vq||'').trim();
+  if(q)list=list.filter(x=>matchVassaMonk(x,q));
+  return list;
+ })();
+ const sc=statusCounts(baseList);
+ const m=searchVassaMonks();
+ const year=r.year||S.vassa.current||'';
+ const years=vYearList();
+ const searching=!!String(vq||'').trim()||!!vsWatFilter;
+ const yearOpts=years.map(y=>`<option value="${esc(y)}" ${y===S.vassa.current?'selected':''}>${toThaiNum(y)} (${toThaiNum((S.vassa.records[y].monks||[]).length)} รูป)</option>`).join('');
+ const watOpts=`<option value="">ทุกวัดที่จำพรรษา (${toThaiNum(yearMonks.length)} รูป)</option>`+
+  watList.map(([w,n])=>`<option value="${esc(w)}" ${w===vsWatFilter?'selected':''}>${esc(w)} — ${toThaiNum(n)} รูป</option>`).join('');
+ // สรุปรายชื่อตามวัดที่จำพรรษา (ชัดเจน ไม่ปนวัดบรรพชา)
+ let watSummary='';
+ if(vsWatFilter){
+  const names=m.slice().sort(byVassaPansa);
+  watSummary=`<div class="meta-box">
+   <b>วัดที่จำพรรษา:</b> ${esc(vsWatFilter)}
+   <div style="margin-top:6px">จำนวน <b>${toThaiNum(names.length)}</b> รูป · เรียงตามพรรษามาก→น้อย</div>
+   <ol style="margin:8px 0 0;padding-left:1.4rem">
+    ${names.map(x=>`<li><b>${esc(x.first)}</b>${x.chaya?' '+esc(x.chaya):''}${x.last?' ('+esc(x.last)+')':''} — พรรษา ${x.pansa!==''&&x.pansa!=null?toThaiNum(x.pansa):'—'} · ${statusLabel(x.status)}</li>`).join('')||'<li class="empty">ไม่มีรายชื่อ</li>'}
+   </ol>
+   <p class="hint" style="margin:8px 0 0">รายการนี้ใช้เฉพาะ «วัดที่จำพรรษา» ไม่รวมวัดที่บรรพชา/อุปสมบท</p>
+  </div>`;
+ }else{
+  watSummary=`<div class="meta-box no-print">
+   <b>สรุปจำนวนตามวัดที่จำพรรษา</b> <span class="hint">(ปี ${toThaiNum(year)} · ไม่ใช่วัดบรรพชา)</span>
+   <div class="scroll" style="margin-top:8px">
+    <table>
+     <tr><th>วัดที่จำพรรษา</th><th style="width:5rem">จำนวน</th><th class="no-print" style="width:6rem"></th></tr>
+     ${watList.map(([w,n],i)=>`<tr>
+      <td class="left">${esc(w)}</td>
+      <td style="text-align:center"><b>${toThaiNum(n)}</b> รูป</td>
+      <td class="no-print"><button class="sm" data-wat="${esc(w)}" onclick="setVsWatFilter(this.getAttribute('data-wat'))">ดูรายชื่อ</button></td>
+     </tr>`).join('')||'<tr><td colspan="3" class="empty">ยังไม่มีข้อมูล</td></tr>'}
+    </table>
+   </div>
+  </div>`;
+ }
+ let h=`<div class="tools no-print">
+  <label style="margin:0;color:inherit">เลือกปี</label>
+  <select id="vyearSel" style="width:auto;min-width:160px" onchange="vsWatFilter='';switchVassaYear(this.value)">${yearOpts}</select>
+  <button onclick="addVassaYearDlg()">+ เพิ่มปีใหม่</button>
+  <button class="del" onclick="delVassaYear()" ${years.length<=1?'disabled':''}>ลบปีนี้</button>
+  <button class="pri" onclick="vassaMonkDlg()">+ เพิ่มพระจำพรรษา</button>
+  <button class="pri" onclick="saveVassaWord()">Word</button>
+  <button class="pri" onclick="saveVassaExcel()">Excel</button>
+  <button onclick="printVassa()">พิมพ์</button>
+ </div>
+ <div class="tools no-print">
+  <label style="margin:0;color:inherit">กรองวัดที่จำพรรษา</label>
+  <select id="vwatSel" style="width:auto;min-width:260px;max-width:100%" onchange="setVsWatFilter(this.value)">${watOpts}</select>
+  ${vsWatFilter?`<button onclick="setVsWatFilter('')">แสดงทุกวัด</button>`:''}
+  <input id="vqi" placeholder="ค้นหาชื่อ / ฉายา / จังหวัด / เบอร์" value="${esc(vq)}" style="max-width:240px" autocomplete="off">
+ </div>
+ <div class="chips no-print">
+  <button type="button" class="chip ${vsFilter==='ทั้งหมด'?'on':''}" data-st="ทั้งหมด" onclick="setVsFilter('ทั้งหมด')">ทั้งหมด <b>${toThaiNum(sc['ทั้งหมด']||0)}</b></button>
+  ${VASSA_STATUS.map(s=>`<button type="button" class="chip ${vsFilter===s?'on':''}" data-st="${s}" onclick="setVsFilter('${s}')">${s} <b>${toThaiNum(sc[s]||0)}</b></button>`).join('')}
+ </div>
+ ${watSummary}
+ <div class="meta-box no-print">
+  <div class="form-grid">
+   <div class="full"><label>ชื่อหัวเอกสารปีนี้ (ไม่ใช่ตัวกรองรายชื่อ)</label>
+    <input id="vplace" value="${esc(place)}" placeholder="เช่น ในวัดสาขา…" onchange="vCur().place=this.value.trim();save();render()">
+   </div>
+  </div>
+  <p class="hint" style="margin:6px 0 0">ใช้ «กรองวัดที่จำพรรษา» เพื่อดูว่าแต่ละวัดมีกี่รูป · รายชื่อเรียงตามพรรษา · ไม่ปะปนกับวัดบรรพชา/อุปสมบท</p>
+ </div>
+ <div id="vassa-print">
+  <div class="vassa-head">
+   <h2>ทะเบียนพระประจำพรรษา</h2>
+   <p>${searching?`ผลการค้นหา «${esc(vq)}» · พบ ${toThaiNum(m.length)} รูป (ทุกปี)`:`${esc(place)}${year?' พ.ศ. '+toThaiNum(year):''}`}</p>
+  </div>
+  <div class="scroll">
+  <table class="vassa-table">
+   <thead>
+    <tr>
+     <th rowspan="2">ที่</th>
+     ${searching?'<th rowspan="2">ปี พ.ศ.</th>':''}
+     <th rowspan="2">ชื่อจริง</th>
+     <th rowspan="2">นามสกุล</th>
+     <th rowspan="2">ฉายา</th>
+     <th rowspan="2">อายุ</th>
+     <th rowspan="2">พรรษา</th>
+     <th rowspan="2">วัดที่จำพรรษา</th>
+     <th colspan="3">บรรพชาอุปสมบท</th>
+     <th rowspan="2">จังหวัด</th>
+     <th rowspan="2">สถานะ</th>
+     <th rowspan="2" class="no-print"></th>
+    </tr>
+    <tr>
+     <th>ว/ด/ป</th>
+     <th>วัด</th>
+     <th>อำเภอ</th>
+    </tr>
+   </thead>
+   <tbody id="vassa-tbody">
+   ${vassaRowsHtml(m,place,year,searching)}
+   </tbody>
+  </table>
+  </div>
+ </div>
+ <p class="hint no-print" style="margin-top:10px">ช่องค้นหาค้นเฉพาะรายชื่อพระจำพรรษา (ชื่อ / ฉายา / วัด / จังหวัด) · เมื่อพิมพ์คำค้นจะค้นทุกปี · ว่างช่องเพื่อกลับไปดูปีที่เลือก</p>`;
+ $('#view').innerHTML=h;
+ const vqi=$('#vqi');
+ if(vqi){
+  let composing=false;
+  vqi.addEventListener('compositionstart',()=>{composing=true});
+  vqi.addEventListener('compositionend',e=>{composing=false;vq=e.target.value;refreshVassaTbody()});
+  vqi.addEventListener('input',e=>{if(composing)return;vq=e.target.value;refreshVassaTbody()});
+ }
+}
+function vassaRowsHtml(m,place,year,searching){
+ searching=!!searching||!!String(vq||'').trim();
+ const cols=searching?14:13;
+ if(!m.length){
+  if(searching)return `<tr><td colspan="${cols}" class="empty">ไม่พบรายชื่อพระจำพรรษาที่ตรงกับ «${esc(vq)}»</td></tr>`;
+  return `<tr><td colspan="${cols}" class="empty">ยังไม่มีรายชื่อพระจำพรรษาปี พ.ศ. ${toThaiNum(esc(year||''))} — กดปุ่มเพิ่มด้านบน</td></tr>`;
+ }
+ return m.map((x,i)=>`<tr>
+  <td>${toThaiNum(i+1)}</td>
+  ${searching?`<td>${toThaiNum(x._year||'')}</td>`:''}
+  <td class="left">${esc(x.first)}</td>
+  <td class="left">${esc(x.last)}</td>
+  <td class="left">${esc(x.chaya)}</td>
+  <td>${toThaiNum(esc(x.age))}</td>
+  <td>${toThaiNum(esc(x.pansa))}</td>
+  <td class="left">${esc(x.vassaWat||x._place||place||'')}</td>
+  <td>${toThaiNum(esc(x.ordDate))}</td>
+  <td class="left">${esc(x.ordWat)}</td>
+  <td>${esc(x.ordAmp)}</td>
+  <td>${esc(x.province)}</td>
+  <td>${statusCell(x.status)}</td>
+  <td class="no-print" style="white-space:nowrap">
+   <button class="sm" onclick="openVassaMonkFromSearch('${x.id}','${esc(x._year||S.vassa.current)}')">แก้ไข</button>
+   <button class="sm del" onclick="delVassaMonkFromSearch('${x.id}','${esc(x._year||S.vassa.current)}')">ลบ</button>
+  </td>
+ </tr>`).join('');
+}
+function openVassaMonkFromSearch(id,year){
+ if(year&&S.vassa.records[year]){S.vassa.current=year;save()}
+ vassaMonkDlg(id);
+}
+function delVassaMonkFromSearch(id,year){
+ if(year&&S.vassa.records[year]){S.vassa.current=year;save()}
+ delVassaMonk(id);
+}
+function refreshVassaTbody(){
+ const tb=$('#vassa-tbody');
+ if(!tb)return;
+ const r=vCur();
+ const place=r.place||'';
+ const year=r.year||S.vassa.current||'';
+ const searching=!!String(vq||'').trim();
+ const m=searchVassaMonks();
+ // อัปเดตหัวตารางถ้าต้องมี/ไม่มีคอลัมน์ปี
+ const thead=tb.previousElementSibling||tb.parentElement.querySelector('thead');
+ if(thead){
+  thead.innerHTML=`<tr>
+     <th rowspan="2">ที่</th>
+     ${searching?'<th rowspan="2">ปี พ.ศ.</th>':''}
+     <th rowspan="2">ชื่อจริง</th>
+     <th rowspan="2">นามสกุล</th>
+     <th rowspan="2">ฉายา</th>
+     <th rowspan="2">อายุ</th>
+     <th rowspan="2">พรรษา</th>
+     <th rowspan="2">วัดที่จำพรรษา</th>
+     <th colspan="3">บรรพชาอุปสมบท</th>
+     <th rowspan="2">จังหวัด</th>
+     <th rowspan="2">สถานะ</th>
+     <th rowspan="2" class="no-print"></th>
+    </tr>
+    <tr>
+     <th>ว/ด/ป</th>
+     <th>วัด</th>
+     <th>อำเภอ</th>
+    </tr>`;
+ }
+ const headP=document.querySelector('#vassa-print .vassa-head p');
+ if(headP){
+  headP.textContent=searching?`ผลการค้นหา «${vq}» · พบ ${toThaiNum(m.length)} รูป (ทุกปี)`:`${place}${year?' พ.ศ. '+toThaiNum(year):''}`;
+ }
+ tb.innerHTML=vassaRowsHtml(m,place,year,searching);
+}
+
+function switchVassaYear(y){
+ if(!y||!S.vassa.records[y])return;
+ S.vassa.current=y;vq='';save();render();
+}
+function addVassaYearDlg(){
+ const next=String((+S.vassa.current||2569)+1);
+ const prevPlace=vCur().place||'วัดป่าอารยวังสาราม';
+ $('#dlg').innerHTML=`<h3>เพิ่มปีจำพรรษาใหม่</h3>
+ <label>ปี พ.ศ.</label><input id="ny" value="${esc(next)}" placeholder="เช่น 2570" style="max-width:140px">
+ <label>ชื่อวัดที่จำพรรษา</label><input id="np" value="${esc(prevPlace)}" placeholder="เช่น วัดป่าอารยวังสาราม">
+ <label><input type="checkbox" id="ncopy"> คัดลอกรายชื่อจากปีปัจจุบัน (${esc(S.vassa.current)})</label>
+ <p class="hint">ถ้าไม่คัดลอก จะเริ่มปีใหม่ด้วยรายชื่อว่าง</p>
+ <div class="row"><button onclick="$('#dlg').close()">ยกเลิก</button><button class="pri" onclick="doAddVassaYear()">เพิ่มปี</button></div>`;
+ $('#dlg').showModal();
+}
+function doAddVassaYear(){
+ const y=$('#ny').value.trim().replace(/\D/g,'');
+ if(!y){$('#ny').focus();return}
+ if(S.vassa.records[y]){alert('มีปี พ.ศ. '+y+' อยู่แล้ว');return}
+ const place=$('#np').value.trim()||'วัดป่าอารยวังสาราม';
+ const copy=$('#ncopy').checked;
+ const monks=copy?vCur().monks.map(m=>({...m,id:uid(),vassaWat:m.vassaWat||place})):[] ;
+ S.vassa.records[y]={year:y,place,monks};
+ S.vassa.current=y;vq='';
+ save();$('#dlg').close();render();
+}
+function delVassaYear(){
+ const y=S.vassa.current;
+ const years=vYearList();
+ if(years.length<=1){alert('ต้องเหลืออย่างน้อย 1 ปี');return}
+ if(!confirm('ลบทะเบียนจำพรรษาปี พ.ศ. '+y+' ทั้งหมด?'))return;
+ delete S.vassa.records[y];
+ S.vassa.current=vYearList()[0];
+ vq='';save();render();
+}
+
+function printVassa(){
+ window.print();
+}
+
+function saveVassaWord(){
+ const r=vCur();
+ const year=r.year||S.vassa.current||'';
+ const place=r.place||'';
+ const m=vMonks();
+ const placeF=place.replace(/[\\/:*?"<>|]/g,' ').trim();
+ const fname='ทะเบียนพระประจำพรรษา'+(placeF?' '+placeF:'')+(year?' '+year:'')+'.doc';
+ const rows=m.map((x,i)=>`<tr>
+  <td style="border:1px solid #666;padding:6px;text-align:center;vertical-align:middle">${toThaiNum(i+1)}</td>
+  <td style="border:1px solid #666;padding:6px;text-align:left;vertical-align:middle">${esc(x.first)}</td>
+  <td style="border:1px solid #666;padding:6px;text-align:left;vertical-align:middle">${esc(x.last)}</td>
+  <td style="border:1px solid #666;padding:6px;text-align:left;vertical-align:middle">${esc(x.chaya)}</td>
+  <td style="border:1px solid #666;padding:6px;text-align:center;vertical-align:middle">${toThaiNum(esc(x.age))}</td>
+  <td style="border:1px solid #666;padding:6px;text-align:center;vertical-align:middle">${toThaiNum(esc(x.pansa))}</td>
+  <td style="border:1px solid #666;padding:6px;text-align:left;vertical-align:middle">${esc(x.vassaWat||place||'')}</td>
+  <td style="border:1px solid #666;padding:6px;text-align:center;vertical-align:middle">${toThaiNum(esc(x.ordDate))}</td>
+  <td style="border:1px solid #666;padding:6px;text-align:left;vertical-align:middle">${esc(x.ordWat)}</td>
+  <td style="border:1px solid #666;padding:6px;text-align:center;vertical-align:middle">${esc(x.ordAmp)}</td>
+  <td style="border:1px solid #666;padding:6px;text-align:center;vertical-align:middle">${esc(x.province)}</td>
+  <td style="border:1px solid #666;padding:6px;text-align:center;vertical-align:middle">${esc(statusLabel(x.status))}</td>
+ </tr>`).join('')||`<tr><td colspan="12" style="border:1px solid #666;padding:8px;text-align:center">ยังไม่มีรายชื่อ</td></tr>`;
+ const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:w="urn:schemas-microsoft-com:office:word"
+ xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--[if gte mso 9]>
+<xml>
+ <o:OfficeDocumentSettings>
+  <o:AllowPNG/>
+ </o:OfficeDocumentSettings>
+</xml>
+<xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:Zoom>100</w:Zoom>
+  <w:DoNotOptimizeForBrowser/>
+ </w:WordDocument>
+</xml>
+<xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true" DefSemiHidden="true" DefQFormat="false" DefPriority="99" LatentStyleCount="267"/>
+</xml>
+<![endif]-->
+<style>
+ /* A4 แนวนอน: 297mm x 210mm = 16838 x 11906 twips */
+ @page Section1 {
+  size: 297mm 210mm;
+  mso-page-orientation: landscape;
+  margin: 1.2cm 1.2cm 1.2cm 1.2cm;
+  mso-header-margin: 0.5cm;
+  mso-footer-margin: 0.5cm;
+ }
+ @page {
+  size: A4 landscape;
+  margin: 1.2cm;
+ }
+ div.Section1 { page: Section1; }
+ body {
+  font-family: "TH Sarabun New", "Sarabun", "Cordia New", Tahoma, sans-serif;
+  font-size: 14pt;
+  color: #111;
+  margin: 0;
+ }
+ h1 { text-align: center; font-size: 20pt; margin: 0 0 4pt 0; }
+ .sub { text-align: center; font-size: 14pt; margin: 0 0 12pt 0; color: #333; }
+ table { border-collapse: collapse; width: 100%; table-layout: fixed; }
+ th {
+  background: #f0e6d4;
+  border: 1px solid #666;
+  padding: 6px 4px;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+ }
+ td {
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  mso-line-height-rule: exactly;
+ }
+</style>
+</head>
+<body>
+<div class="Section1">
+<h1>ทะเบียนพระประจำพรรษา</h1>
+<p class="sub">${esc(place)}${year?' พ.ศ. '+toThaiNum(year):''}</p>
+<table>
+<thead>
+<tr>
+ <th rowspan="2" style="width:4%">ที่</th>
+ <th rowspan="2" style="width:12%">ชื่อจริง</th>
+ <th rowspan="2" style="width:9%">นามสกุล</th>
+ <th rowspan="2" style="width:8%">ฉายา</th>
+ <th rowspan="2" style="width:5%">อายุ</th>
+ <th rowspan="2" style="width:6%">พรรษา</th>
+ <th rowspan="2" style="width:12%">วัดที่จำพรรษา</th>
+ <th colspan="3">บรรพชาอุปสมบท</th>
+ <th rowspan="2" style="width:7%">จังหวัด</th>
+ <th rowspan="2" style="width:7%">สถานะ</th>
+</tr>
+<tr>
+ <th style="width:10%">ว/ด/ป</th>
+ <th style="width:12%">วัด</th>
+ <th style="width:6%">อำเภอ</th>
+</tr>
+</thead>
+<tbody>${rows}</tbody>
+</table>
+<!--[if gte mso 9]>
+<xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+ </w:WordDocument>
+</xml>
+<xml>
+ <w:sectPr>
+  <w:pgSz w:w="16838" w:h="11906" w:orient="landscape"/>
+  <w:pgMar w:top="680" w:right="680" w:bottom="680" w:left="680" w:header="284" w:footer="284"/>
+ </w:sectPr>
+</xml>
+<![endif]-->
+</div>
+</body>
+</html>`;
+ const blob=new Blob(['\ufeff',html],{type:'application/msword;charset=utf-8'});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement('a');
+ a.href=url;a.download=fname;
+ document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+
+function vassaMonkDlg(id){
+ const r=vCur();
+ const defWat=r.place||'';
+ const m=normalizeMonk(r.monks.find(x=>x.id===id)||{first:'',last:'',chaya:'',age:'',pansa:'',vassaWat:defWat,ordDate:'',ordWat:'',ordAmp:'',province:'',status:'ปกติ',birth:'',monkId:'',phone:'',note:'',statusHistory:[]},defWat);
+ const st=statusLabel(m.status);
+ const stOpts=VASSA_STATUS.map(s=>`<option value="${s}" ${s===st?'selected':''}>${s}</option>`).join('');
+ const hist=(m.statusHistory||[]).slice().reverse().map(h=>`<div>${esc(h.date||'')} · ${esc(h.from||'')} → <b>${esc(h.to||'')}</b>${h.reason?' · '+esc(h.reason):''}</div>`).join('')||'<div class="hint">ยังไม่มีประวัติ</div>';
+ $('#dlg').innerHTML=`<h3>${id?'แก้ไข':'เพิ่ม'}พระจำพรรษา (${esc(r.year||S.vassa.current)})</h3>
+ <div class="form-grid">
+  <div class="full"><label>ชื่อจริง (พร้อมสมณศักดิ์)</label><input id="vf" value="${esc(m.first)}" placeholder="เช่น พระครูสังฆรักษ์อรัญ"></div>
+  <div><label>นามสกุล</label><input id="vl" value="${esc(m.last)}"></div>
+  <div><label>ฉายา</label><input id="vc" value="${esc(m.chaya)}"></div>
+  <div><label>อายุ</label><input type="number" min="1" id="va" value="${esc(m.age)}"></div>
+  <div><label>พรรษา</label><input type="number" min="0" id="vpansa" value="${esc(m.pansa)}"></div>
+  <div><label>วันเกิด</label><input id="vbirth" value="${esc(m.birth)}" placeholder="เช่น 1 มกราคม 2520"></div>
+  <div><label>เลขประจำตัวพระ</label><input id="vid" value="${esc(m.monkId)}"></div>
+  <div><label>เบอร์โทร</label><input id="vphone" value="${esc(m.phone)}"></div>
+  <div class="full"><label>วัดที่จำพรรษา</label><input id="vvw" value="${esc(m.vassaWat||defWat)}"></div>
+  <div class="full"><label>วันเดือนปี บรรพชา/อุปสมบท</label><input id="vod" value="${esc(m.ordDate)}" placeholder="เช่น 24 กรกฎาคม 2551"></div>
+  <div class="full"><label>วัดที่บรรพชา/อุปสมบท</label><input id="vow" value="${esc(m.ordWat)}"></div>
+  <div><label>อำเภอ</label><input id="voa" value="${esc(m.ordAmp)}"></div>
+  <div><label>จังหวัด</label><input id="vpr" value="${esc(m.province)}"></div>
+  <div class="full"><label>สถานะ</label><select id="vst">${stOpts}</select></div>
+  <div class="full" id="vreason-wrap" style="${st==='ปกติ'?'display:none':''}"><label>เหตุผลเปลี่ยนสถานะ (บันทึกในประวัติ)</label><input id="vreason" placeholder="เช่น ย้ายไปวัด…"></div>
+  <div class="full"><label>หมายเหตุ</label><textarea id="vnote" rows="2">${esc(m.note)}</textarea></div>
+  <div class="full"><label>ประวัติการเปลี่ยนสถานะ</label><div class="hist">${hist}</div></div>
+ </div>
+ <div class="row"><button onclick="$('#dlg').close()">ยกเลิก</button><button class="pri" onclick="saveVassaMonk('${id||''}')">บันทึก</button></div>`;
+ $('#dlg').showModal();
+ $('#vst')?.addEventListener('change',()=>{
+  const w=$('#vreason-wrap');
+  if(w)w.style.display=$('#vst').value==='ปกติ'&&st==='ปกติ'?'none':'';
+ });
+}
+function saveVassaMonk(id){
+ const r=vCur();
+ const old=id?r.monks.find(x=>x.id===id):null;
+ const newStatus=statusLabel($('#vst').value);
+ const v={
+  first:$('#vf').value.trim(),
+  last:$('#vl').value.trim(),
+  chaya:$('#vc').value.trim(),
+  age:$('#va').value.trim(),
+  pansa:$('#vpansa').value.trim()===''?'':String(Math.max(0,+$('#vpansa').value||0)),
+  birth:$('#vbirth').value.trim(),
+  monkId:$('#vid').value.trim(),
+  phone:$('#vphone').value.trim(),
+  vassaWat:$('#vvw').value.trim(),
+  ordDate:$('#vod').value.trim(),
+  ordWat:$('#vow').value.trim(),
+  ordAmp:$('#voa').value.trim(),
+  province:$('#vpr').value.trim(),
+  note:$('#vnote').value.trim(),
+  status:newStatus
+ };
+ if(!v.first){$('#vf').focus();return}
+ if(id&&old){
+  const hist=Array.isArray(old.statusHistory)?old.statusHistory.slice():[];
+  if(statusLabel(old.status)!==newStatus){
+   hist.push({date:today(),from:statusLabel(old.status),to:newStatus,reason:($('#vreason')?.value||'').trim()});
+  }
+  Object.assign(old,{...v,statusHistory:hist});
+ }else{
+  r.monks.push({id:uid(),...v,statusHistory:newStatus!=='ปกติ'?[{date:today(),from:'—',to:newStatus,reason:($('#vreason')?.value||'').trim()}]:[]});
+ }
+ save();$('#dlg').close();render();
+}
+function saveVassaExcel(){
+ const r=vCur();
+ const year=r.year||S.vassa.current||'';
+ const place=(r.place||'').replace(/[\\/:*?"<>|]/g,' ').trim();
+ const m=searchVassaMonks();
+ const head=['ที่','ชื่อจริง','นามสกุล','ฉายา','อายุ','พรรษา','วันเกิด','เลขประจำตัวพระ','เบอร์โทร','วัดที่จำพรรษา','วันบรรพชา','วัดบรรพชา','อำเภอ','จังหวัด','สถานะ','หมายเหตุ'];
+ const rows=[head,...m.map((x,i)=>[
+  i+1,x.first,x.last,x.chaya,x.age,x.pansa,x.birth||'',x.monkId||'',x.phone||'',
+  x.vassaWat||place||'',x.ordDate,x.ordWat,x.ordAmp,x.province,statusLabel(x.status),x.note||''
+ ])];
+ downloadCsv('ทะเบียนพระประจำพรรษา'+(place?' '+place:'')+(year?' '+year:'')+'.csv',rows);
+ alert('ส่งออก Excel (CSV) แล้ว — เปิดด้วย Microsoft Excel หรือ Google Sheets ได้');
+}
+function delVassaMonk(id){
+ const r=vCur();
+ if(confirm('ลบรายชื่อพระจำพรรษานี้?')){r.monks=r.monks.filter(x=>x.id!==id);save();render()}
+}
+
+function hasTravelDates(g){
+ // รวมในข้อความแจ้งเฉพาะผู้มีวันเข้าพักและวันออกครบ
+ return !!(g&&String(g.arrive||'').trim()&&String(g.depart||'').trim());
+}
+function msgText(){
+ // เฉพาะพระที่มีวันเข้า–ออก (เดินทางร่วมศาสนกิจ) — ไม่รวมผู้พักที่ไม่มีวันที่
+ const c=cur().filter(hasTravelDates);
+ const wat=tCur().name||'วัด';
+ let t='ขอโอกาสครับแจ้งคณะสงฆ์ ที่เดินทางเพื่อร่วมศาสนากิจ โดยจัดที่พัก ณ.'+wat+' ดังนี้ ครับ\n\n';
+ if(!c.length){
+  t+='(ยังไม่มีรายชื่อที่มีวันเข้าพักและวันออก)\n';
+ }else{
+  c.forEach((g,i)=>t+=thNum(i+1)+'.'+g.name+(g.pansa!==''&&g.pansa!=null?' ('+toThaiNum(g.pansa)+' พรรษา)':'')+'\n');
+  rooms().forEach(r=>{
+   const o=inRoom(r.id).filter(hasTravelDates);
+   if(!o.length)return;
+   t+='\n🏠'+r.name+'\n';
+   o.forEach((g,i)=>t+=toThaiNum(i+1)+'.'+g.name+(g.pansa!==''&&g.pansa!=null?' ('+toThaiNum(g.pansa)+' พรรษา)':'')+'\n');
+  });
+  const un=c.filter(g=>!rooms().some(r=>r.id===g.room));
+  if(un.length){
+   t+='\n⚠️ยังไม่ได้จัดกุฏิ\n';
+   un.forEach((g,i)=>t+=toThaiNum(i+1)+'.'+g.name+(g.pansa!==''&&g.pansa!=null?' ('+toThaiNum(g.pansa)+' พรรษา)':'')+'\n');
+  }
+ }
+ t+='\n…………………………………………\nแจ้งเมื่อวันที่ '+thDate(today())+'\n'+(tCur().notifier||'');
+ return t;
+}
+function msg(){
+ $('#view').innerHTML=templeBarHtml()+`<div class="tools"><button class="pri" onclick="copyMsg()">คัดลอกข้อความ</button><button onclick="window.print()">พิมพ์</button></div>
+ <label>ชื่อผู้แจ้ง</label><input value="${esc(tCur().notifier||'')}" oninput="tCur().notifier=this.value;save();$('#pv').textContent=msgText()" style="max-width:360px;margin-bottom:12px">
+ <pre id="pv">${esc(msgText())}</pre>
+ <p class="hint">ข้อความแจ้งรวมเฉพาะพระที่มีทั้งวันเข้าพักและวันออก — ผู้ไม่มีวันที่จะไม่ถูกนำไปแจ้งในรายการเดินทางร่วมศาสนกิจ</p>
+ <p class="hint" id="cm"></p>`;
+}
+function copyMsg(){
+ const t=msgText();
+ const ok=()=>$('#cm').textContent='คัดลอกแล้ว วางในไลน์ได้เลย';
+ try{navigator.clipboard.writeText(t).then(ok,fb)}catch(e){fb()}
+ function fb(){const r=document.createRange();r.selectNodeContents($('#pv'));const s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');ok()}catch(e){$('#cm').textContent='กดค้างที่ข้อความเพื่อคัดลอก'}}
+}
+
+function data(){
+ $('#view').innerHTML=`<p>ข้อมูลเก็บไว้ในเบราว์เซอร์เครื่องนี้ (รวมทั้งทะเบียนกุฏิและจำพรรษา)</p>
+ <div class="meta-box">
+  <b>ส่งออกโปรแกรมพร้อมข้อมูล (แนะนำ)</b>
+  <p class="hint" style="margin:6px 0 10px">สร้างไฟล์ HTML ที่มีข้อมูลครบถ้วนฝังไว้ในตัว — เปิดบนมือถือหรือคอมเครื่องอื่นได้ทันที โดยไม่ต้องนำเข้าข้อมูลใหม่</p>
+  <button class="pri" onclick="exportPortableHtml()">ส่งออกไฟล์ HTML พร้อมข้อมูลทั้งหมด</button>
+ </div>
+ <p style="margin-top:14px">สำรองแบบข้อความ (JSON) สำหรับคัดลอกไปวาง</p>
+ <div class="tools"><button onclick="exp()">ดาวน์โหลดไฟล์สำรอง JSON</button><button onclick="$('#dlg').innerHTML=impHtml;$('#dlg').showModal()">นำเข้าจากไฟล์สำรอง</button>
+ <button class="del" onclick="if(confirm('ล้างรายชื่อกุฏิของวัด «'+tCur().name+'» ทั้งหมด?')){tCur().guests=[];save();render()}">ล้างรายชื่อกุฏิวัดนี้</button>
+ <button class="del" onclick="if(confirm('ล้างรายชื่อจำพรรษาปีปัจจุบัน ('+S.vassa.current+')?')){vCur().monks=[];save();render()}">ล้างรายชื่อปีปัจจุบัน</button></div>
+ <p class="hint">ปุ่ม “ออกจากวัด” เก็บประวัติไว้ในแท็บรายชื่อทั้งหมด</p>
+ <div class="tools"><button onclick="document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark'">สลับโหมดมืด/สว่าง</button></div>`;
+}
+function exportPortableHtml(){
+ try{
+  // ข้อมูลปัจจุบัน (escape ให้ไม่ทำลายแท็ก script)
+  const data=JSON.stringify(S)
+   .replace(/</g,'\\u003c')
+   .replace(/>/g,'\\u003e')
+   .replace(/\u2028/g,'\\u2028')
+   .replace(/\u2029/g,'\\u2029');
+  const styles=[...document.querySelectorAll('style')].map(s=>s.innerHTML).join('\n');
+  // ดึงโค้ดโปรแกรมจาก script เดิม แล้วตัดข้อมูลฝังเก่าออก
+  let bodyScript=[...document.querySelectorAll('script:not([src])')]
+   .map(s=>s.textContent||'')
+   .filter(t=>t.length>100)
+   .sort((a,b)=>b.length-a.length)[0]||'';
+  // ลบ marker / ข้อมูลฝังชุดเก่า ถ้ามี
+  bodyScript=bodyScript
+   .replace(/\/\*\s*__PORTABLE_EXPORT_MARKER__\s*\*\//g,'')
+   .replace(/window\.__PORTABLE_DATA__\s*=\s*\{[\s\S]*?\};/,'')
+   .replace(/<\/script/gi,'<\\/script');
+  if(!bodyScript.includes('function render')||!bodyScript.includes('const KEY')){
+   alert('ไม่สามารถสร้างไฟล์ได้จากหน้านี้\nกรุณาเปิดไฟล์โปรแกรมต้นฉบับ แล้วลองส่งออกอีกครั้ง');
+   return;
+  }
+  const html='<!DOCTYPE html>\n'+
+'<html lang="th">\n'+
+'<head>\n'+
+'<meta charset="utf-8">\n'+
+'<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'+
+'<title>ทะเบียนกุฏิ วัดป่าอารยวังสาราม</title>\n'+
+'<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">\n'+
+'<style>\n'+styles+'\n</style>\n'+
+'</head>\n'+
+'<body>\n'+
+'<header id="hdr"><h1 id="hdr-title">ทะเบียนกุฏิ วัดป่าอารยวังสาราม</h1><p id="hdr-sub">บันทึกพระสงฆ์ผู้มาพัก จัดกุฏิ จำพรรษา และสร้างข้อความแจ้ง</p></header>\n'+
+'<main>\n'+
+'<nav id="tabs"></nav>\n'+
+'<div class="stats" id="stats"></div>\n'+
+'<div id="view"></div>\n'+
+'</main>\n'+
+'<dialog id="dlg"></dialog>\n'+
+'<script>\n'+
+'/* __PORTABLE_EXPORT_MARKER__ */\n'+
+'window.__PORTABLE_DATA__='+data+';\n'+
+bodyScript+'\n'+
+'</scr'+'ipt>\n'+
+'</body>\n'+
+'</html>\n';
+  const blob=new Blob(['\ufeff',html],{type:'text/html;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  const d=new Date();
+  const stamp=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  a.href=url;
+  a.download='ทะเบียนกุฏิ-อารยวังสาราม-'+stamp+'.html';
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),2000);
+  alert('ส่งออกไฟล์ HTML แล้ว\n\nวิธีใช้:\n1. บันทึกไฟล์ลงเครื่อง\n2. เปิดด้วย Chrome / Safari / Edge\n3. ข้อมูลรายชื่อจะโหลดครบอัตโนมัติ');
+ }catch(e){
+  console.error(e);
+  alert('ส่งออกไม่สำเร็จ: '+(e.message||e));
+ }
+}
+const impHtml=`<h3>นำเข้าข้อมูล</h3><label>วางข้อความจากไฟล์สำรอง</label><textarea id="imp" rows="8"></textarea><div class="row"><button onclick="$('#dlg').close()">ยกเลิก</button><button class="pri" onclick="doImp()">นำเข้า</button></div>`;
+function exp(){
+ const t=JSON.stringify(S,null,1);
+ $('#dlg').innerHTML=`<h3>ไฟล์สำรอง</h3><p class="hint">คัดลอกข้อความนี้เก็บไว้ (เช่นส่งเข้าไลน์ตัวเอง) แล้ววางในช่อง “นำเข้า”</p><textarea id="ex" rows="8" readonly>${esc(t)}</textarea><div class="row"><button onclick="$('#dlg').close()">ปิด</button><button class="pri" onclick="$('#ex').select();try{document.execCommand('copy')}catch(e){}">คัดลอก</button></div>`;
+ $('#dlg').showModal();
+}
+function doImp(){try{const d=JSON.parse($('#imp').value);if(!d.rooms&&!d.temples)throw 0;S=migrateTemples(d);S.vassa=migrateVassa(S.vassa);save();$('#dlg').close();render()}catch(e){alert('ข้อมูลไม่ถูกต้อง')}}
+
+function guestDlg(id){
+ const g=guests().find(x=>x.id===id)||{name:'',room:rooms()[0]?.id,pansa:'',arrive:today(),depart:'',note:'',history:[]};
+ const hist=(g.history||[]).slice().reverse().map(h=>`<div>${thDate(h.arrive)||'—'} → ${thDate(h.depart)||'—'} · ${(rooms().find(r=>r.id===h.room)||{}).name||h.room||'—'}${h.note?' · '+esc(h.note):''}</div>`).join('')||'<div class="hint">ยังไม่มีประวัติเข้าพัก</div>';
+ $('#dlg').innerHTML=`<h3>${id?'แก้ไข':'เพิ่ม'}พระสงฆ์ — ${esc(tCur().name)}</h3>
+ <label>ชื่อ (พร้อมสมณศักดิ์/ฉายา)</label><input id="gn" value="${esc(g.name)}">
+ <label>พรรษา</label><input type="number" min="0" step="1" id="gp" value="${g.pansa!==''&&g.pansa!=null?esc(g.pansa):''}" placeholder="เช่น 5">
+ <label>กุฏิ</label><select id="gr">${rooms().map(r=>`<option value="${r.id}" ${r.id===g.room?'selected':''}>${esc(r.name)} (${inRoom(r.id).length}/${r.cap})</option>`).join('')}</select>
+ <label>วันที่เข้าพัก</label><input type="date" id="ga" value="${g.arrive}">
+ <label>วันที่ออก (ถ้าทราบ)</label><input type="date" id="gd" value="${g.depart}">
+ <label>หมายเหตุ (วัด/คณะที่มา ฯลฯ)</label><input id="gt" value="${esc(g.note)}">
+ ${id?`<label>ประวัติการเข้าพัก (ครั้งก่อน)</label><div class="hist">${hist}</div>`:''}
+ <div class="row"><button onclick="$('#dlg').close()">ยกเลิก</button><button class="pri" onclick="saveG('${id||''}')">บันทึก</button></div>`;
+ $('#dlg').showModal();
+}
+function saveG(id){
+ const pRaw=$('#gp').value.trim();
+ const v={name:$('#gn').value.trim(),room:$('#gr').value,pansa:pRaw===''?'':Math.max(0,+pRaw||0),arrive:$('#ga').value,depart:$('#gd').value,note:$('#gt').value.trim()};
+ if(!v.name){$('#gn').focus();return}
+ if(id)Object.assign(guests().find(x=>x.id===id),v);else guests().push({id:uid(),out:false,...v});
+ save();$('#dlg').close();render();
+}
+function roomDlg(id){
+ const r=rooms().find(x=>x.id===id)||{name:'',cap:2};
+ $('#dlg').innerHTML=`<h3>${id?'แก้ไข':'เพิ่ม'}กุฏิ</h3><label>ชื่อกุฏิ / เรือน</label><input id="rn" value="${esc(r.name)}"><label>รับได้ (รูป)</label><input type="number" min="1" id="rc" value="${r.cap}">
+ <div class="row">${id?`<button class="del" onclick="delR('${id}')">ลบกุฏิ</button>`:''}<button onclick="$('#dlg').close()">ยกเลิก</button><button class="pri" onclick="saveR('${id||''}')">บันทึก</button></div>`;
+ $('#dlg').showModal();
+}
+function saveR(id){
+ const v={name:$('#rn').value.trim(),cap:Math.max(1,+$('#rc').value||1)};
+ if(!v.name){$('#rn').focus();return}
+ if(id)Object.assign(rooms().find(x=>x.id===id),v);else rooms().push({id:uid(),...v});
+ save();$('#dlg').close();render();
+}
+function delR(id){
+ if(inRoom(id).length){alert('ยังมีพระสงฆ์พักอยู่ ย้ายออกก่อนจึงลบได้');return}
+ if(confirm('ลบกุฏินี้?')){tCur().rooms=rooms().filter(r=>r.id!==id);save();$('#dlg').close();render()}
+}
+function checkout(id){
+ const g=guests().find(x=>x.id===id);
+ if(!g||!confirm('บันทึกว่า '+g.name+' ออกจากวัดแล้ว?'))return;
+ if(!Array.isArray(g.history))g.history=[];
+ g.history.push({arrive:g.arrive||'',depart:g.depart||today(),room:g.room||'',note:g.note||''});
+ g.out=true;g.depart=g.depart||today();save();render();
+}
+function checkin(id){
+ const g=guests().find(x=>x.id===id);
+ if(!g)return;
+ g.out=false;g.depart='';g.arrive=today();save();render();
+}
+function delG(id){if(confirm('ลบรายการนี้ถาวร?')){tCur().guests=guests().filter(g=>g.id!==id);save();render()}}
+
+function overview(){
+ const temples=tList();
+ const cross=String(crossQ||'').trim().toLowerCase();
+ let hits=[];
+ if(cross){
+  temples.forEach(t=>{
+   (t.guests||[]).forEach(g=>{
+    const s=[g.name,g.note,g.pansa,t.name,t.branch].join(' ').toLowerCase();
+    if(s.includes(cross))hits.push({...g,temple:t.name,branch:t.branch||'',roomName:(t.rooms||[]).find(r=>r.id===g.room)?.name||'—'});
+   });
+  });
+ }
+ const branchMap={};
+ temples.forEach(t=>{const b=t.branch||'(ไม่ระบุสาขา)';if(!branchMap[b])branchMap[b]=[];branchMap[b].push(t)});
+ let h=`<div class="tools no-print">
+  <input id="crossQi" placeholder="ค้นหารายชื่อข้ามวัด (ชื่อ / หมายเหตุ / วัด)" value="${esc(crossQ)}" style="max-width:320px" autocomplete="off">
+  <button class="pri" onclick="crossQ=($('#crossQi')||{}).value||'';overview()">ค้นหา</button>
+  ${cross?`<button onclick="crossQ='';overview()">ล้างค้นหา</button>`:''}
+ </div>`;
+ if(cross){
+  h+=`<div class="meta-box"><b>ผลการค้นหา «${esc(crossQ)}» · ${toThaiNum(hits.length)} รายการ</b>
+   <div class="scroll" style="margin-top:8px"><table><tr><th>ชื่อ</th><th>วัด</th><th>สาขา</th><th>กุฏิ</th><th>พรรษา</th><th>สถานะ</th></tr>
+   ${hits.length?hits.map(g=>`<tr><td>${esc(g.name)}</td><td>${esc(g.temple)}</td><td>${esc(g.branch)}</td><td>${esc(g.roomName)}</td><td>${g.pansa!==''&&g.pansa!=null?toThaiNum(g.pansa):'—'}</td><td>${g.out?'ออกแล้ว':'พักอยู่'}</td></tr>`).join(''):'<tr><td colspan="6" class="empty">ไม่พบ</td></tr>'}
+   </table></div></div>`;
+ }
+ h+=`<h3 style="margin:8px 0">สรุปตามวัด</h3><div class="dash-grid">`;
+ temples.forEach(t=>{
+  const stay=(t.guests||[]).filter(g=>!g.out);
+  const cap=(t.rooms||[]).reduce((a,r)=>a+r.cap,0);
+  h+=`<div class="dash-card" style="cursor:pointer" onclick="switchTemple('${t.id}');goTab('board')">
+   <h3>${esc(t.name)}</h3>
+   <div class="hint">${esc(t.branch||'ไม่ระบุสาขา')}</div>
+   <div style="margin-top:8px"><span class="num">${toThaiNum(stay.length)}</span> รูป · ว่าง ${toThaiNum(Math.max(cap-stay.length,0))} · กุฏิ ${toThaiNum((t.rooms||[]).length)}</div>
+  </div>`;
+ });
+ h+=`</div>`;
+ h+=`<h3 style="margin:16px 0 8px">จัดกลุ่มตามสาขา / เขตปกครอง</h3>`;
+ Object.keys(branchMap).sort((a,b)=>a.localeCompare(b,'th')).forEach(b=>{
+  const ts=branchMap[b];
+  const n=ts.reduce((a,t)=>a+(t.guests||[]).filter(g=>!g.out).length,0);
+  h+=`<div class="meta-box"><b>${esc(b)}</b> · ${toThaiNum(ts.length)} วัด · ${toThaiNum(n)} รูป
+   <div class="hint" style="margin-top:4px">${ts.map(t=>esc(t.name)).join(' · ')}</div></div>`;
+ });
+ const vy=S.vassa.current;
+ const vm=(S.vassa.records[vy]?.monks)||[];
+ const sc=statusCounts(vm);
+ h+=`<h3 style="margin:16px 0 8px">จำพรรษาปีปัจจุบัน (${toThaiNum(vy||'—')})</h3>
+ <div class="chips">
+  <span class="chip on">ทั้งหมด <b>${toThaiNum(sc['ทั้งหมด']||0)}</b></span>
+  ${VASSA_STATUS.map(s=>`<span class="chip">${s} <b>${toThaiNum(sc[s]||0)}</b></span>`).join('')}
+ </div>
+ <p class="hint">กดการ์ดวัดเพื่อเปิดผังกุฏิของวัดนั้น · ตั้งชื่อสาขาได้ที่ปุ่ม «แก้ชื่อ/สาขา»</p>`;
+ $('#view').innerHTML=h;
+ const qi=$('#crossQi');
+ if(qi){
+  let composing=false;
+  qi.addEventListener('compositionstart',()=>{composing=true});
+  qi.addEventListener('compositionend',e=>{composing=false;crossQ=e.target.value;overview()});
+  qi.addEventListener('keydown',e=>{if(e.key==='Enter'){crossQ=qi.value;overview()}});
+ }
+}
+function report(){
+ const years=vYearList();
+ const ySel=S.vassa.current;
+ const rec=S.vassa.records[ySel]||{monks:[]};
+ const monks=rec.monks||[];
+ const byWat={},byProv={},byPansa={};
+ monks.forEach(m=>{
+  const w=m.vassaWat||rec.place||'(ไม่ระบุ)';
+  const p=m.province||'(ไม่ระบุ)';
+  const ps=String(m.pansa??'')===''?'(ไม่ระบุ)':String(m.pansa);
+  byWat[w]=(byWat[w]||0)+1;
+  byProv[p]=(byProv[p]||0)+1;
+  byPansa[ps]=(byPansa[ps]||0)+1;
+ });
+ const max=arr=>Math.max(1,...Object.values(arr));
+ const bars=(obj)=>{
+  const mx=max(obj);
+  return Object.entries(obj).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'th')).map(([k,n])=>`
+   <div class="bar-row"><span class="lab">${esc(k)}</span><span class="bar"><i style="width:${Math.round(n/mx*100)}%"></i></span><span class="n">${toThaiNum(n)}</span></div>`).join('')||'<p class="empty">ไม่มีข้อมูล</p>';
+ };
+ const yearOpts=years.map(y=>`<option value="${esc(y)}" ${y===ySel?'selected':''}>${toThaiNum(y)}</option>`).join('');
+ const sc=statusCounts(monks);
+ // สรุปรายปีทุกปี
+ const yearRows=years.map(y=>{
+  const ms=S.vassa.records[y]?.monks||[];
+  const c=statusCounts(ms);
+  return `<tr><td>${toThaiNum(y)}</td><td>${toThaiNum(c['ทั้งหมด']||0)}</td><td>${toThaiNum(c['ปกติ']||0)}</td><td>${toThaiNum(c['ลาสิกขา']||0)}</td><td>${toThaiNum(c['ย้ายสังกัด']||0)}</td><td>${toThaiNum(c['มรณะภาพ']||0)}</td></tr>`;
+ }).join('');
+ $('#view').innerHTML=`
+ <div class="tools no-print">
+  <label style="margin:0">ปีรายงาน</label>
+  <select style="width:auto" onchange="S.vassa.current=this.value;save();report()">${yearOpts}</select>
+  <button class="pri" onclick="window.print()">พิมพ์รายงาน</button>
+  <button onclick="exportReportExcel()">ส่งออก Excel</button>
+ </div>
+ <div id="report-print">
+  <div class="vassa-head" style="text-align:center">
+   <h2>รายงานทะเบียนพระประจำพรรษา</h2>
+   <p>${esc(rec.place||'')} · ${toThaiNum(ySel||'')}</p>
+  </div>
+  <div class="meta-box">
+   <b>สรุปสถานะ</b>
+   <div class="chips" style="margin-top:8px">
+    <span class="chip on">ทั้งหมด <b>${toThaiNum(sc['ทั้งหมด']||0)}</b></span>
+    ${VASSA_STATUS.map(s=>`<span class="chip">${s} <b>${toThaiNum(sc[s]||0)}</b></span>`).join('')}
+   </div>
+  </div>
+  <div class="dash-grid">
+   <div class="dash-card"><h3>แยกตามวัดที่จำพรรษา</h3>${bars(byWat)}</div>
+   <div class="dash-card"><h3>แยกตามจังหวัด</h3>${bars(byProv)}</div>
+   <div class="dash-card"><h3>แยกตามพรรษา</h3>${bars(byPansa)}</div>
+  </div>
+  <div class="meta-box" style="margin-top:14px">
+   <b>สรุปรายปีทั้งหมด</b>
+   <div class="scroll" style="margin-top:8px">
+    <table><tr><th>ปี</th><th>ทั้งหมด</th><th>ปกติ</th><th>ลาสิกขา</th><th>ย้ายสังกัด</th><th>มรณะภาพ</th></tr>
+    ${yearRows||'<tr><td colspan="6" class="empty">ยังไม่มีข้อมูล</td></tr>'}
+    </table>
+   </div>
+  </div>
+  <p class="hint no-print">ใช้พิมพ์เป็นรายงานเจ้าอาวาส / เจ้าคณะ · เลือกปีด้านบนแล้วกดพิมพ์</p>
+ </div>`;
+}
+function exportReportExcel(){
+ const years=vYearList();
+ const rows=[['ปี','ทั้งหมด','ปกติ','ลาสิกขา','ย้ายสังกัด','มรณะภาพ']];
+ years.forEach(y=>{
+  const c=statusCounts(S.vassa.records[y]?.monks||[]);
+  rows.push([y,c['ทั้งหมด']||0,c['ปกติ']||0,c['ลาสิกขา']||0,c['ย้ายสังกัด']||0,c['มรณะภาพ']||0]);
+ });
+ downloadCsv('สรุปจำพรรษารายปี.csv',rows);
+}
+render();
+</script>
+</body>
+</html>
