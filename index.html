@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="utf-8">
@@ -6,7 +6,6 @@
 <title>ทะเบียนกุฏิ วัดป่าอารยวังสาราม</title>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-
 :root{--bg:#f3efe4;--card:#fbf8f0;--ink:#2b2416;--mut:#7a6d55;--line:#d9cfb8;--sf:#8a3b12;--sf2:#f0dcc4;--ok:#3f6b3a;--bad:#a33;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1a13;--card:#27231a;--ink:#f1e9d6;--mut:#a89c82;--line:#41392a;--sf:#e59a5c;--sf2:#3b2e1d;--ok:#8fc383;--bad:#f08a8a}}
 :root[data-theme="dark"]{--bg:#1d1a13;--card:#27231a;--ink:#f1e9d6;--mut:#a89c82;--line:#41392a;--sf:#e59a5c;--sf2:#3b2e1d;--ok:#8fc383;--bad:#f08a8a}
@@ -100,7 +99,11 @@ dialog::backdrop{background:#0008}label{display:block;margin:8px 0 2px;font-size
 .bar-row .bar i{display:block;height:100%;background:var(--sf)}
 .bar-row .n{min-width:2rem;text-align:right;font-size:.9rem}
 .hist{font-size:.85rem;color:var(--mut);max-height:120px;overflow:auto;border:1px solid var(--line);border-radius:6px;padding:6px 8px;background:var(--card)}
-@media print{.no-print-board .tools,.no-print-board .alert-box{display:none!important}}
+.save-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px;padding:8px 12px;background:var(--card);border:1px solid var(--line);border-radius:8px}
+.save-bar #saveStatus{font-size:.9rem;color:var(--mut);flex:1;min-width:8rem}
+button.save-btn{background:var(--ok)!important;color:#fff!important;border-color:var(--ok)!important;font-weight:600;padding:8px 16px}
+button.save-btn:hover{filter:brightness(1.05)}
+@media print{.no-print-board .tools,.no-print-board .alert-box,.save-bar{display:none!important}}
 @media print{
   @page{size:A4 landscape;margin:1cm}
   header,nav,.tools,button,.stats,.no-print{display:none!important}
@@ -116,7 +119,6 @@ dialog::backdrop{background:#0008}label{display:block;margin:8px 0 2px;font-size
   .vassa-table th{background:#eee!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   dialog{display:none!important}
 }
-
 </style>
 </head>
 <body>
@@ -128,9 +130,6 @@ dialog::backdrop{background:#0008}label{display:block;margin:8px 0 2px;font-size
 </main>
 <dialog id="dlg"></dialog>
 <script>
-/* __PORTABLE_EXPORT_MARKER__ */
-window.__PORTABLE_DATA__={"currentTemple":"fi1tcql","temples":{"fi1tcql":{"id":"fi1tcql","name":"วัดป่าอารยวังสาราม","notifier":"พระอัฐพล ฐิตภทฺโท","rooms":[{"id":"r1","name":"กุฏิรวม 1","cap":4},{"id":"r2","name":"กุฏิรวม 2","cap":6},{"id":"r3","name":"กุฏิ 2","cap":2},{"id":"r4","name":"เรือนพักชาย","cap":6},{"id":"6d0dl6n","name":"กุฏิ 3","cap":1},{"id":"oa2j639","name":"กุฏิ 4","cap":2},{"id":"18igkeo","name":"กุฏิ5","cap":1},{"id":"v40mf9h","name":"กุฏิ 6","cap":1},{"id":"b0bg26y","name":"กุฏิ 7","cap":1},{"id":"r7qcllz","name":"กุฏิ 8","cap":1},{"id":"6w945x1","name":"กุฏิ 9","cap":1}],"guests":[{"id":"dtnciqn","out":false,"name":"พระครูสังฆรักษ์อรัญ ญาณมโย","room":"r1","arrive":"2026-10-04","depart":"2026-10-10","note":"ที่พักสงฆ์ป่าเทสรังสีรัตนคีรี","pansa":18,"history":[]},{"id":"jmdu1kv","out":false,"name":"พระอุดร อธิวโร","room":"r3","arrive":"2026-10-04","depart":"2026-10-10","note":"วัดป่าญาณสัมปันโนอารยาราม","pansa":16,"history":[]},{"id":"4piy0ag","out":false,"name":"พระดิศพันธุ์ วํสธมฺโม","room":"r1","arrive":"2026-10-04","depart":"2026-10-10","note":"สำนักปฏิบัติธรรมอารวังโส","pansa":15,"history":[]},{"id":"3qapcza","out":false,"name":"พระครูปลัดวีรศักดิ์ สีลธโร","room":"r2","arrive":"2026-10-04","depart":"2026-10-10","note":"วัดป่าสิริวัฒนวิสุทธิ์","pansa":9,"history":[]},{"id":"r74f9dc","out":false,"name":"พระครูใบฎีกา ปิยะธิป ปิยธมฺโม","room":"r2","arrive":"2026-10-04","depart":"2026-10-10","note":"วัดป่านาคนิมิตร","pansa":4,"history":[]},{"id":"czuerde","out":false,"name":"พระสหรัฐ ปญฺญาวฑฺฒโก","room":"r4","arrive":"2026-10-04","depart":"2026-10-10","note":"วัดป่าสิริวัฒนวิสุทธิ์","pansa":4,"history":[]},{"id":"uizlfkd","out":false,"name":"พระวีรวัฒน์   สุทฺธิสาโร","room":"r4","arrive":"2026-10-04","depart":"2026-10-10","note":"วัดป่าสิริวัฒนวิสุทธิ์","pansa":2,"history":[]},{"id":"z8ye4fo","out":false,"name":"พระถาวร  ถิรสีโล","room":"r4","arrive":"2026-10-04","depart":"2026-10-10","note":"ที่พักสงฆ์ป่าเทสรังสีรัตนคีรี","pansa":1,"history":[]},{"id":"t4j3r40","out":false,"name":"พระธวัช\tสมาจาโร","room":"6d0dl6n","pansa":16,"arrive":"","depart":"","note":"","history":[]},{"id":"k1o6bwd","out":false,"name":"พระนวัช\tจิตฺตภทฺโท","room":"oa2j639","pansa":4,"arrive":"","depart":"","note":"","history":[]},{"id":"fu8ah3s","out":false,"name":"พระปิยะพงษ์ ปิยวํโส","room":"r2","pansa":20,"arrive":"","depart":"","note":"","history":[]},{"id":"xxq4mt3","out":true,"name":"โยมวุฒิ (คนสวน)","room":"r1","pansa":"","arrive":"","depart":"2026-10-01","note":"","history":[{"arrive":"","depart":"2026-10-01","room":"r1","note":""}]},{"id":"6pnh0o1","out":false,"name":"โยมวุฒิ (คนสวน)","room":"18igkeo","pansa":"","arrive":"","depart":"","note":"","history":[]},{"id":"8fpoeob","out":false,"name":"พระวงทิตย์ อภิวฑฺฒโน","room":"v40mf9h","pansa":"","arrive":"","depart":"","note":"","history":[]},{"id":"3ptnkpc","out":false,"name":"*ของเต็ม*","room":"b0bg26y","pansa":"","arrive":"","depart":"","note":"","history":[]},{"id":"bdopn70","out":false,"name":"พระอัฐพล  ฐิตภทฺโท","room":"r7qcllz","pansa":3,"arrive":"","depart":"","note":"","history":[]},{"id":"9lkf9mj","out":false,"name":"พระพุฒิพงศ์ ปวฑฺฒโน","room":"6w945x1","pansa":"","arrive":"","depart":"","note":"","history":[]}],"branch":""}},"vassa":{"current":"ประจำปี ๒๕๖๙","records":{"ประจำปี ๒๕๖๙":{"year":"ประจำปี ๒๕๖๙","place":"ในวัดสาขาการปกครองของหลวงพ่อท่านเจ้าคุณพระราชวัชรสุทธิวงศ์","monks":[{"id":"s9lbzzi","first":"พระครูสังฆรักษ์อรัญ","last":"พันธ์ขาว","chaya":"ญาณมโย","age":"42","pansa":"18","vassaWat":"ที่พักสงฆ์ป่าเทสรังสีภูหว้ารัตนคีรี","ordDate":"24 กรกฎาคม 2551","ordWat":"วัดล้านนาญาณสังวราราม","ordAmp":"จอมทอง","province":"เชียงใหม่","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"z9etbj8","first":"พระพีระสันต์","last":"พันธ์ขาว","chaya":"ธีรวโร","age":"41","pansa":"6","vassaWat":"ที่พักสงฆ์ป่าเทสรังสีภูหว้ารัตนคีรี","ordDate":"22 กุมภาพันธ์ 2562","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"เมือง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"erplcm3","first":"พระสุโชติ","last":"โคกศรี","chaya":"จันทโชโต","age":"68","pansa":"5","vassaWat":"ที่พักสงฆ์ป่าเทสรังสีภูหว้ารัตนคีรี","ordDate":"11 กรกฎาคม 2564","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"เมือง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"q9ooqd8","first":"พระถาวร","last":"ทาสี","chaya":"ถิรสีโล","age":"60","pansa":"1","vassaWat":"ที่พักสงฆ์ป่าเทสรังสีภูหว้ารัตนคีรี","ordDate":"26 กรกฎาคม 2568","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"เมือง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"lqugfn3","first":"พระอุดร","last":"ห้อยดอกหอม","chaya":"อธิวโร","age":"48","pansa":"16","vassaWat":"วัดป่าญาณสัมปันโนอารยาราม","ordDate":"๒๔ กรกฎาคม ๒๕๕๓","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"เมือง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"448fh5f","first":"พระครูสมุห์นิคม","last":"จึงอยู่สุข","chaya":"นิติธมฺโม","age":"80","pansa":"15","vassaWat":"วัดป่าญาณสัมปันโนอารยาราม","ordDate":"๒๔ กรกฎาคม ๒๕๕๓","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"เมือง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"zy6oxze","first":"พระอลงกต","last":"ขันติสิทธิ์","chaya":"ธีรวโร","age":"70","pansa":"9","vassaWat":"วัดป่าญาณสัมปันโนอารยาราม","ordDate":"19 มกราคม 2560","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"เมือง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"nlifcqw","first":"พระชาตรี","last":"สมอุดม","chaya":"ขนฺติโก","age":"40","pansa":"2","vassaWat":"วัดป่าญาณสัมปันโนอารยาราม","ordDate":"17 มกราคม 2567","ordWat":"วัดบูรพาราม(พระอารามหลวง)","ordAmp":"เมือง","province":"สุรินทร์","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"ikmtd6x","first":"พระนิวัฒน์","last":"บุญชีพ","chaya":"อธิวโร","age":"59","pansa":"7","vassaWat":"อีสานธรรมสถานอารยวังโส","ordDate":"27 มิถุนายน 2563","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"เมือง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"zesgwgd","first":"พระครูอุดมธรรมนิวิฐ รัฐเวช","last":"เชื้อประไพศิลป์","chaya":"อุตฺตมญาโณ","age":"45","pansa":"21","vassaWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordDate":"14 กรกฎาคม 2548","ordWat":"วัดเจดีย์หลวงวรวิหาร","ordAmp":"เมือง","province":"เชียงใหม่","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"hu4qmyn","first":"พระแสวง","last":"สุขแจ่ม","chaya":"ปญฺญาภทฺโท","age":"72","pansa":"4","vassaWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordDate":"29 เมษายน 2565","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"เมือง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"glpypgt","first":"พระคิงค์","last":"คำเหมา","chaya":"โชติภทฺโท","age":"55","pansa":"3","vassaWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordDate":"4 มกราคม 2566","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"เมือง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"zedd5qn","first":"พระสมพร","last":"ศรีสร้างคอม","chaya":"พลภทฺโท","age":"49","pansa":"","vassaWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordDate":"26 พฤษภาคม 2568","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"เมือง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"pplizr3","first":"พระสาธิต","last":"สิทธิ์อ่วม","chaya":"ปสิทฺธิโก","age":"41","pansa":"","vassaWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordDate":"21 กรกฎาคม 2569","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"ต้นธง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"1zsn65a","first":"พระอิทธิกุล","last":"ศิริชัยเวทย์","chaya":"ฐิตวิชโย","age":"54","pansa":"","vassaWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordDate":"24 กรกฎาคม 2569","ordWat":"วัดป่าอารยวังสาราม(ธ)","ordAmp":"เชียงรากน้อย","province":"พระนครศรีอยุธยา","status":"ลาสิกขา","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"4p3l2n9","first":"พระก้องภพ","last":"คุณพนิชกิจ","chaya":"กตคุโณ","age":"52","pansa":"25","vassaWat":"วัดป่าสิริวัฒนวิสุทธิ์","ordDate":"16 มีนาคม 2544","ordWat":"วัดป่าสิริวัฒนวิสุทธิ์","ordAmp":"ท่าตะโก","province":"นครสวรรค์","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"p7azkba","first":"พระครูธรรมธรสมชาย","last":"ดำรงรัตนศิลป์","chaya":"ปริชาโน","age":"67","pansa":"18","vassaWat":"วัดป่าสิริวัฒนวิสุทธิ์","ordDate":"12 กรกฎาคม 2551","ordWat":"วัดราชผาติการามวรวิหาร","ordAmp":"ดุสิต","province":"กรุงเทพฯ","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"468f1rl","first":"พระวรินทร","last":"นิรวิทย์","chaya":"อาภาสาโร","age":"59","pansa":"13","vassaWat":"วัดป่าสิริวัฒนวิสุทธิ์","ordDate":"27 กรกฎาคม 2556","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"ต้นธง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"1vzb2hv","first":"พระวสุธัช","last":"กรวิภาสเรือง","chaya":"ธมฺมธโช","age":"69","pansa":"9","vassaWat":"วัดป่าสิริวัฒนวิสุทธิ์","ordDate":"28 พฤษภาคม 2560","ordWat":"วัดราชผาติการามวรวิหาร","ordAmp":"ดุสิต","province":"กรุงเทพฯ","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"sul44p0","first":"พระครูปลัดวีรศักดิ์","last":"เขตกรรม","chaya":"สีลธโร","age":"43","pansa":"9","vassaWat":"วัดป่าสิริวัฒนวิสุทธิ์","ordDate":"2 กรกฎาคม 2560","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"ต้นธง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"8yc0m8a","first":"พระจรูญ","last":"จันทร์จินางกูร","chaya":"กิติโชโต","age":"51","pansa":"7","vassaWat":"วัดป่าสิริวัฒนวิสุทธิ์","ordDate":"7 กรกฎาคม 2561","ordWat":"วัดป่าสิริวัฒนวิสุทธิ์","ordAmp":"ท่าตะโก","province":"นครสวรรค์","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"g7caq15","first":"พระวินัย","last":"จันทร์สิทธิ์","chaya":"กิตฺติภทฺโท","age":"61","pansa":"5","vassaWat":"วัดป่าสิริวัฒนวิสุทธิ์","ordDate":"31 มกราคม 2664","ordWat":"วัดป่าอารยวังสาราม(ธ)","ordAmp":"บางไทร","province":"พระนครศรีอยุธยา","status":"ลาสิกขา","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"ytv9ygl","first":"พระสหรัฐ","last":"วงศ์รอด","chaya":"ปญฺญวฑฺฒโก","age":"58","pansa":"4","vassaWat":"วัดป่าสิริวัฒนวิสุทธิ์","ordDate":"4 มีนาคม 2566","ordWat":"วัดป่าสิริวัฒนวิสุทธิ์","ordAmp":"ท่าตะโก","province":"นครสวรรค์","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"9vhptlj","first":"พระสินสวัสดิ์","last":"วรภัทร์","chaya":"ฐิตคุโณ","age":"69","pansa":"4","vassaWat":"วัดป่าสิริวัฒนวิสุทธิ์","ordDate":"6 พฤษภาคม 2566","ordWat":"วัดป่าสิริวัฒนาวิสุทธิ์","ordAmp":"ท่าตะโก","province":"นครสวรรค์","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"zmgi0sa","first":"พระวีรวัฒน์","last":"งามลมัย","chaya":"สุทธิสาโร","age":"49","pansa":"2","vassaWat":"วัดป่าสิริวัฒนวิสุทธิ์","ordDate":"20 กรกฎาคม 2567","ordWat":"วัดป่าอารยวังสาราม(ธ)","ordAmp":"บางไทร","province":"พระนครศรีอยุธยา","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"rrz1lcv","first":"พระเดชา","last":"ชัยพงษ์","chaya":"อติภทฺโท","age":"56","pansa":"","vassaWat":"วัดป่าสิริวัฒนวิสุทธิ์","ordDate":"12 เมษายน 2569","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"เมือง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"rqrbr5u","first":"พระปิยะพงษ์","last":"อัศววุฒิพงศ์","chaya":"ปิยวํโส","age":"42","pansa":"20","vassaWat":"วัดป่าอารยวังสาราม","ordDate":"15 มีนาคม 2549","ordWat":"วัดเจดีย์หลวงวรวิหาร","ordAmp":"เมือง","province":"เชียงใหม่","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"5ieqpzz","first":"พระธวัช","last":"กล่อมเกลี่ยง","chaya":"สมาจาโร","age":"77","pansa":"16","vassaWat":"วัดป่าอารยวังสาราม","ordDate":"24 กรกฎาคม 2556","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"ต้นธง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"js9xp0n","first":"พระอนันตชัย","last":"ชินนาวิน","chaya":"ชินวโร","age":"51","pansa":"6","vassaWat":"วัดป่าอารยวังสาราม","ordDate":"22 กันยายน 2562","ordWat":"วัดป่าอารยวังสาราม(ธ)","ordAmp":"บางไทร","province":"พระนครศรีอยุธยา","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"wlouf40","first":"พระนวัช","last":"สิรวริเอกนุภาพ","chaya":"จิตฺตภทฺโท","age":"58","pansa":"4","vassaWat":"วัดป่าอารยวังสาราม","ordDate":"27 เมษายน 2565","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"เมือง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"w9f5fs1","first":"พระอัฐพล","last":"ชูศิลป์","chaya":"ฐิตภทฺโท","age":"32","pansa":"3","vassaWat":"วัดป่าอารยวังสาราม","ordDate":"4 มกราคม 2566","ordWat":"วัดป่าอารยวังสาราม(ธ)","ordAmp":"บางไทร","province":"พระนครศรีอยุธยา","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"ywc5d1d","first":"พระวงทิตย์","last":"พิมแสน","chaya":"อภิวฑฺฒโน","age":"62","pansa":"","vassaWat":"วัดป่าอารยวังสาราม","ordDate":"24 กรกฎาคม 2569","ordWat":"วัดป่าอารยวังสาราม(ธ)","ordAmp":"บางไทร","province":"พระนครศรีอยุธยา","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"ajxzw2u","first":"พระพุฒิพงศ์","last":"โชติพงศ์ปรีดา","chaya":"ปวฑฺฒโน","age":"22","pansa":"","vassaWat":"วัดป่าอารยวังสาราม","ordDate":"24 กรกฎาคม 2569","ordWat":"วัดป่าอารยวังสาราม(ธ)","ordAmp":"บางไทร","province":"พระนครศรีอยุธยา","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"0blijya","first":"พระลิขิต","last":"เนาว์สุวรรณ","chaya":"จิตฺตสาโร","age":"87","pansa":"13","vassaWat":"สำนักปฏิบัติธรรมเขาขุนน้ำคีรีวง(ธ)","ordDate":"19 กรกฎาคม 2556","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"เมือง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"4ydif0b","first":"พระดิสพันธุ์","last":"ปิยะกาญจนะ","chaya":"วงฺสธมฺโม","age":"60","pansa":"15","vassaWat":"สำนักปฏิบัติธรรมอารยวังโส","ordDate":"14 กรกฎาคม 2554","ordWat":"วัดป่าพุทธพจน์หริภุญไชย(ธ)","ordAmp":"เมือง","province":"ลำพูน","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"4z2hnr0","first":"พระเศกสม","last":"สุวรรณประกร","chaya":"สุวณฺณปภากโร","age":"68","pansa":"22","vassaWat":"วัดป่ารัตนปัญญาราม","ordDate":"13 กันยายน 2546","ordWat":"วัดล้านนาญาณสังวราราม","ordAmp":"จอมทอง","province":"เชียงใหม่","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"dez8q2w","first":"พระวิโรจน์","last":"ชนสิริไกรศรี","chaya":"อคฺควํโส","age":"69","pansa":"22","vassaWat":"วัดป่ารัตนปัญญาราม","ordDate":"15 พฤษภาคม 2547","ordWat":"วัดมหาธาตุยุวราชรังกฤษฎิ์","ordAmp":"พระนคร","province":"กรุงเทพฯ","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]},{"id":"eq7h5c1","first":"พระธรรมหัตถ์","last":"ต้นสกุล","chaya":"ธมฺมิสฺสโร","age":"60","pansa":"8","vassaWat":"วัดป่ารัตนปัญญาราม","ordDate":"29 พฤษภาคม 2561","ordWat":"วัดเวฬุวันราชกีร์","ordAmp":"นาลันทา รัฐพิหาร","province":"ประเทศอินเดีย","status":"ปกติ","birth":"","monkId":"","phone":"","note":"","statusHistory":[]}]}}}};
-
 const KEY='arayawang_kuti_v1';
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -302,7 +301,37 @@ if(typeof window.__PORTABLE_DATA__!=='undefined'&&window.__PORTABLE_DATA__){
 S=migrateTemples(S);
 S.vassa=migrateVassa(S.vassa);
 let tab='board',q='',vq='',vsFilter='ทั้งหมด',crossQ='';
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+let lastSavedAt=null;
+const save=()=>{
+ try{
+  localStorage.setItem(KEY,JSON.stringify(S));
+  lastSavedAt=new Date();
+  updateSaveStatus();
+ }catch(e){console.error(e)}
+};
+function updateSaveStatus(){
+ const el=document.getElementById('saveStatus');
+ if(!el)return;
+ if(lastSavedAt){
+  const t=lastSavedAt.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  el.textContent='บันทึกล่าสุด '+t;
+  el.style.color='var(--ok)';
+ }else{
+  el.textContent='กดปุ่มบันทึกเมื่อแก้ไขเสร็จ';
+  el.style.color='var(--mut)';
+ }
+}
+function saveAll(){
+ try{
+  localStorage.setItem(KEY,JSON.stringify(S));
+  lastSavedAt=new Date();
+  updateSaveStatus();
+  const t=lastSavedAt.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  alert('บันทึกข้อมูลทั้งหมดเรียบร้อยแล้ว\nเวลา '+t+'\n\nข้อมูลถูกเก็บในเบราว์เซอร์เครื่องนี้');
+ }catch(e){
+  alert('บันทึกไม่สำเร็จ: '+(e.message||e));
+ }
+}
 function tCur(){
  if(!S.temples[S.currentTemple]){
   const keys=Object.keys(S.temples);
@@ -386,7 +415,10 @@ function render(){
   </div>
   <button class="${tab==='vassa'?'on':''}" onclick="goTab('vassa')">จำพรรษา</button>
   <button class="${tab==='report'?'on':''}" onclick="goTab('report')">รายงาน</button>
-  <button class="${tab==='data'?'on':''}" onclick="goTab('data')">สำรองข้อมูล</button>`;
+  <button class="${tab==='data'?'on':''}" onclick="goTab('data')">สำรองข้อมูล</button>
+  <button class="save-btn" onclick="saveAll()" title="บันทึกข้อมูลทั้งหมดลงเบราว์เซอร์">💾 บันทึกข้อมูลทั้งหมด</button>
+  <span id="saveStatus" class="hint"></span>`;
+ setTimeout(updateSaveStatus,0);
  if(tab==='vassa'){
   const r=vCur();
   const place=r.place||'';
@@ -938,19 +970,40 @@ function delVassaMonk(id){
  if(confirm('ลบรายชื่อพระจำพรรษานี้?')){r.monks=r.monks.filter(x=>x.id!==id);save();render()}
 }
 
+function hasTravelDates(g){
+ // รวมในข้อความแจ้งเฉพาะผู้มีวันเข้าพักและวันออกครบ
+ return !!(g&&String(g.arrive||'').trim()&&String(g.depart||'').trim());
+}
 function msgText(){
- const c=cur();const wat=tCur().name||'วัด';
+ // เฉพาะพระที่มีวันเข้า–ออก (เดินทางร่วมศาสนกิจ) — ไม่รวมผู้พักที่ไม่มีวันที่
+ const c=cur().filter(hasTravelDates);
+ const wat=tCur().name||'วัด';
  let t='ขอโอกาสครับแจ้งคณะสงฆ์ ที่เดินทางเพื่อร่วมศาสนากิจ โดยจัดที่พัก ณ.'+wat+' ดังนี้ ครับ\n\n';
- c.forEach((g,i)=>t+=thNum(i+1)+'.'+g.name+(g.pansa!==''&&g.pansa!=null?' ('+toThaiNum(g.pansa)+' พรรษา)':'')+'\n');
- rooms().forEach(r=>{const o=inRoom(r.id);if(!o.length)return;t+='\n🏠'+r.name+'\n';o.forEach((g,i)=>t+=toThaiNum(i+1)+'.'+g.name+(g.pansa!==''&&g.pansa!=null?' ('+toThaiNum(g.pansa)+' พรรษา)':'')+'\n')});
- const un=c.filter(g=>!rooms().some(r=>r.id===g.room));
- if(un.length){t+='\n⚠️ยังไม่ได้จัดกุฏิ\n';un.forEach((g,i)=>t+=toThaiNum(i+1)+'.'+g.name+(g.pansa!==''&&g.pansa!=null?' ('+toThaiNum(g.pansa)+' พรรษา)':'')+'\n')}
- t+='\n…………………………………………\nแจ้งเมื่อวันที่ '+thDate(today())+'\n'+(tCur().notifier||'');return t;
+ if(!c.length){
+  t+='(ยังไม่มีรายชื่อที่มีวันเข้าพักและวันออก)\n';
+ }else{
+  c.forEach((g,i)=>t+=thNum(i+1)+'.'+g.name+(g.pansa!==''&&g.pansa!=null?' ('+toThaiNum(g.pansa)+' พรรษา)':'')+'\n');
+  rooms().forEach(r=>{
+   const o=inRoom(r.id).filter(hasTravelDates);
+   if(!o.length)return;
+   t+='\n🏠'+r.name+'\n';
+   o.forEach((g,i)=>t+=toThaiNum(i+1)+'.'+g.name+(g.pansa!==''&&g.pansa!=null?' ('+toThaiNum(g.pansa)+' พรรษา)':'')+'\n');
+  });
+  const un=c.filter(g=>!rooms().some(r=>r.id===g.room));
+  if(un.length){
+   t+='\n⚠️ยังไม่ได้จัดกุฏิ\n';
+   un.forEach((g,i)=>t+=toThaiNum(i+1)+'.'+g.name+(g.pansa!==''&&g.pansa!=null?' ('+toThaiNum(g.pansa)+' พรรษา)':'')+'\n');
+  }
+ }
+ t+='\n…………………………………………\nแจ้งเมื่อวันที่ '+thDate(today())+'\n'+(tCur().notifier||'');
+ return t;
 }
 function msg(){
  $('#view').innerHTML=templeBarHtml()+`<div class="tools"><button class="pri" onclick="copyMsg()">คัดลอกข้อความ</button><button onclick="window.print()">พิมพ์</button></div>
  <label>ชื่อผู้แจ้ง</label><input value="${esc(tCur().notifier||'')}" oninput="tCur().notifier=this.value;save();$('#pv').textContent=msgText()" style="max-width:360px;margin-bottom:12px">
- <pre id="pv">${esc(msgText())}</pre><p class="hint" id="cm"></p>`;
+ <pre id="pv">${esc(msgText())}</pre>
+ <p class="hint">ข้อความแจ้งรวมเฉพาะพระที่มีทั้งวันเข้าพักและวันออก — ผู้ไม่มีวันที่จะไม่ถูกนำไปแจ้งในรายการเดินทางร่วมศาสนกิจ</p>
+ <p class="hint" id="cm"></p>`;
 }
 function copyMsg(){
  const t=msgText();
@@ -1014,7 +1067,7 @@ function exportPortableHtml(){
 '</main>\n'+
 '<dialog id="dlg"></dialog>\n'+
 '<script>\n'+
-'\n'+
+'/* __PORTABLE_EXPORT_MARKER__ */\n'+
 'window.__PORTABLE_DATA__='+data+';\n'+
 bodyScript+'\n'+
 '</scr'+'ipt>\n'+
@@ -1228,7 +1281,6 @@ function exportReportExcel(){
  downloadCsv('สรุปจำพรรษารายปี.csv',rows);
 }
 render();
-
 </script>
 </body>
 </html>
