@@ -300,7 +300,7 @@ if(typeof window.__PORTABLE_DATA__!=='undefined'&&window.__PORTABLE_DATA__){
 }
 S=migrateTemples(S);
 S.vassa=migrateVassa(S.vassa);
-let tab='board',q='',vq='',vsFilter='ทั้งหมด',crossQ='';
+let tab='board',q='',vq='',vsFilter='ทั้งหมด',vsWatFilter='',crossQ='';
 let lastSavedAt=null;
 const save=()=>{
  try{
@@ -540,6 +540,18 @@ function matchVassaMonk(x,q){
   .map(v=>String(v??'').toLowerCase()).join(' ');
  return s.includes(qq);
 }
+function vassaWatKey(x,place){
+ return String(x.vassaWat||x._place||place||'').trim()||'(ไม่ระบุวัดที่จำพรรษา)';
+}
+function vassaWatList(yearMonks,place){
+ const map={};
+ (yearMonks||[]).forEach(m=>{
+  const k=vassaWatKey(m,place);
+  if(!map[k])map[k]=0;
+  map[k]++;
+ });
+ return Object.entries(map).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'th'));
+}
 function searchVassaMonks(){
  const q=String(vq||'').trim();
  const r=vCur();
@@ -559,42 +571,88 @@ function searchVassaMonks(){
   list.sort(byVassaPansa);
  }
  if(vsFilter&&vsFilter!=='ทั้งหมด')list=list.filter(x=>statusLabel(x.status)===vsFilter);
+ // กรองเฉพาะวัดที่จำพรรษา (ไม่ใช่วัดบรรพชา)
+ if(vsWatFilter)list=list.filter(x=>vassaWatKey(x,place)===vsWatFilter);
  return list;
 }
 function setVsFilter(f){vsFilter=f;refreshVassaTbody();document.querySelectorAll('.chip[data-st]').forEach(el=>el.classList.toggle('on',el.dataset.st===vsFilter))}
+function setVsWatFilter(w){vsWatFilter=w||'';vassa()}
 function vassa(){
  const r=vCur();
- const allForCount=String(vq||'').trim()?searchVassaMonks():(vsFilter&&vsFilter!=='ทั้งหมด'?vMonks().filter(x=>statusLabel(x.status)===vsFilter):vMonks());
- const baseList=(()=>{const q=String(vq||'').trim();if(!q)return vMonks();const out=[];vYearList().forEach(y=>{const rec=S.vassa.records[y];if(!rec||!rec.monks)return;rec.monks.forEach(x=>{if(matchVassaMonk(x,q))out.push(x)})});return out})();
+ const place=r.place||'';
+ const yearMonks=vMonks();
+ const watList=vassaWatList(yearMonks,place);
+ if(vsWatFilter&&!watList.some(([k])=>k===vsWatFilter))vsWatFilter='';
+ const baseList=(()=>{
+  let list=yearMonks.slice();
+  if(vsWatFilter)list=list.filter(x=>vassaWatKey(x,place)===vsWatFilter);
+  const q=String(vq||'').trim();
+  if(q)list=list.filter(x=>matchVassaMonk(x,q));
+  return list;
+ })();
  const sc=statusCounts(baseList);
  const m=searchVassaMonks();
- const place=r.place||'';
  const year=r.year||S.vassa.current||'';
  const years=vYearList();
- const searching=!!String(vq||'').trim();
+ const searching=!!String(vq||'').trim()||!!vsWatFilter;
  const yearOpts=years.map(y=>`<option value="${esc(y)}" ${y===S.vassa.current?'selected':''}>${toThaiNum(y)} (${toThaiNum((S.vassa.records[y].monks||[]).length)} รูป)</option>`).join('');
+ const watOpts=`<option value="">ทุกวัดที่จำพรรษา (${toThaiNum(yearMonks.length)} รูป)</option>`+
+  watList.map(([w,n])=>`<option value="${esc(w)}" ${w===vsWatFilter?'selected':''}>${esc(w)} — ${toThaiNum(n)} รูป</option>`).join('');
+ // สรุปรายชื่อตามวัดที่จำพรรษา (ชัดเจน ไม่ปนวัดบรรพชา)
+ let watSummary='';
+ if(vsWatFilter){
+  const names=m.slice().sort(byVassaPansa);
+  watSummary=`<div class="meta-box">
+   <b>วัดที่จำพรรษา:</b> ${esc(vsWatFilter)}
+   <div style="margin-top:6px">จำนวน <b>${toThaiNum(names.length)}</b> รูป · เรียงตามพรรษามาก→น้อย</div>
+   <ol style="margin:8px 0 0;padding-left:1.4rem">
+    ${names.map(x=>`<li><b>${esc(x.first)}</b>${x.chaya?' '+esc(x.chaya):''}${x.last?' ('+esc(x.last)+')':''} — พรรษา ${x.pansa!==''&&x.pansa!=null?toThaiNum(x.pansa):'—'} · ${statusLabel(x.status)}</li>`).join('')||'<li class="empty">ไม่มีรายชื่อ</li>'}
+   </ol>
+   <p class="hint" style="margin:8px 0 0">รายการนี้ใช้เฉพาะ «วัดที่จำพรรษา» ไม่รวมวัดที่บรรพชา/อุปสมบท</p>
+  </div>`;
+ }else{
+  watSummary=`<div class="meta-box no-print">
+   <b>สรุปจำนวนตามวัดที่จำพรรษา</b> <span class="hint">(ปี ${toThaiNum(year)} · ไม่ใช่วัดบรรพชา)</span>
+   <div class="scroll" style="margin-top:8px">
+    <table>
+     <tr><th>วัดที่จำพรรษา</th><th style="width:5rem">จำนวน</th><th class="no-print" style="width:6rem"></th></tr>
+     ${watList.map(([w,n],i)=>`<tr>
+      <td class="left">${esc(w)}</td>
+      <td style="text-align:center"><b>${toThaiNum(n)}</b> รูป</td>
+      <td class="no-print"><button class="sm" data-wat="${esc(w)}" onclick="setVsWatFilter(this.getAttribute('data-wat'))">ดูรายชื่อ</button></td>
+     </tr>`).join('')||'<tr><td colspan="3" class="empty">ยังไม่มีข้อมูล</td></tr>'}
+    </table>
+   </div>
+  </div>`;
+ }
  let h=`<div class="tools no-print">
   <label style="margin:0;color:inherit">เลือกปี</label>
-  <select id="vyearSel" style="width:auto;min-width:160px" onchange="switchVassaYear(this.value)">${yearOpts}</select>
+  <select id="vyearSel" style="width:auto;min-width:160px" onchange="vsWatFilter='';switchVassaYear(this.value)">${yearOpts}</select>
   <button onclick="addVassaYearDlg()">+ เพิ่มปีใหม่</button>
   <button class="del" onclick="delVassaYear()" ${years.length<=1?'disabled':''}>ลบปีนี้</button>
   <button class="pri" onclick="vassaMonkDlg()">+ เพิ่มพระจำพรรษา</button>
   <button class="pri" onclick="saveVassaWord()">Word</button>
   <button class="pri" onclick="saveVassaExcel()">Excel</button>
   <button onclick="printVassa()">พิมพ์</button>
-  <input id="vqi" placeholder="ค้นหาชื่อ / ฉายา / วัด / จังหวัด / เบอร์" value="${esc(vq)}" style="max-width:280px" autocomplete="off">
+ </div>
+ <div class="tools no-print">
+  <label style="margin:0;color:inherit">กรองวัดที่จำพรรษา</label>
+  <select id="vwatSel" style="width:auto;min-width:260px;max-width:100%" onchange="setVsWatFilter(this.value)">${watOpts}</select>
+  ${vsWatFilter?`<button onclick="setVsWatFilter('')">แสดงทุกวัด</button>`:''}
+  <input id="vqi" placeholder="ค้นหาชื่อ / ฉายา / จังหวัด / เบอร์" value="${esc(vq)}" style="max-width:240px" autocomplete="off">
  </div>
  <div class="chips no-print">
   <button type="button" class="chip ${vsFilter==='ทั้งหมด'?'on':''}" data-st="ทั้งหมด" onclick="setVsFilter('ทั้งหมด')">ทั้งหมด <b>${toThaiNum(sc['ทั้งหมด']||0)}</b></button>
   ${VASSA_STATUS.map(s=>`<button type="button" class="chip ${vsFilter===s?'on':''}" data-st="${s}" onclick="setVsFilter('${s}')">${s} <b>${toThaiNum(sc[s]||0)}</b></button>`).join('')}
  </div>
+ ${watSummary}
  <div class="meta-box no-print">
   <div class="form-grid">
-   <div class="full"><label>ชื่อวัดที่จำพรรษา (หัวเอกสารปีนี้)</label>
-    <input id="vplace" value="${esc(place)}" placeholder="เช่น วัดป่าอารยวังสาราม" onchange="vCur().place=this.value.trim();save();render()">
+   <div class="full"><label>ชื่อหัวเอกสารปีนี้ (ไม่ใช่ตัวกรองรายชื่อ)</label>
+    <input id="vplace" value="${esc(place)}" placeholder="เช่น ในวัดสาขา…" onchange="vCur().place=this.value.trim();save();render()">
    </div>
   </div>
-  <p class="hint" style="margin:6px 0 0">แต่ละปีเก็บรายชื่อและชื่อวัดแยกกัน · สลับปีด้านบนเพื่อดู/แก้ไข · บันทึกเป็น Word หรือพิมพ์เอกสารได้</p>
+  <p class="hint" style="margin:6px 0 0">ใช้ «กรองวัดที่จำพรรษา» เพื่อดูว่าแต่ละวัดมีกี่รูป · รายชื่อเรียงตามพรรษา · ไม่ปะปนกับวัดบรรพชา/อุปสมบท</p>
  </div>
  <div id="vassa-print">
   <div class="vassa-head">
