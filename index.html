@@ -3,7 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ทะเบียนกุฏิ วัดป่าอารยวังสาราม</title>
+<meta name="theme-color" content="#8a3b12">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ทะเบียนกุฏิ">
+<meta name="description" content="ทะเบียนกุฏิ หลายวัด และทะเบียนพระประจำพรรษา">
+<title>ทะเบียนกุฏิ · จำพรรษา</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f3efe4;--card:#fbf8f0;--ink:#2b2416;--mut:#7a6d55;--line:#d9cfb8;--sf:#8a3b12;--sf2:#f0dcc4;--ok:#3f6b3a;--bad:#a33;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -417,8 +426,10 @@ function render(){
   <button class="${tab==='report'?'on':''}" onclick="goTab('report')">รายงาน</button>
   <button class="${tab==='data'?'on':''}" onclick="goTab('data')">สำรองข้อมูล</button>
   <button class="save-btn" onclick="saveAll()" title="บันทึกข้อมูลทั้งหมดลงเบราว์เซอร์">💾 บันทึกข้อมูลทั้งหมด</button>
-  <span id="saveStatus" class="hint"></span>`;
- setTimeout(updateSaveStatus,0);
+  <button type="button" id="pwaInstallBtn" class="pri" style="display:none" onclick="triggerPwaInstall()">ติดตั้งแอป</button>
+  <span id="saveStatus" class="hint"></span>
+  <span id="pwaStatus" class="hint"></span>`;
+ setTimeout(()=>{updateSaveStatus();updatePwaUi()},0);
  if(tab==='vassa'){
   const r=vCur();
   const place=r.place||'';
@@ -1338,6 +1349,63 @@ function exportReportExcel(){
  });
  downloadCsv('สรุปจำพรรษารายปี.csv',rows);
 }
+
+/* ——— PWA ——— */
+let deferredPwaPrompt=null;
+function isStandalonePwa(){
+ return window.matchMedia('(display-mode: standalone)').matches
+  || window.navigator.standalone===true
+  || document.referrer.includes('android-app://');
+}
+function updatePwaUi(){
+ const btn=$('#pwaInstallBtn');
+ const st=$('#pwaStatus');
+ if(!btn)return;
+ if(isStandalonePwa()){
+  btn.style.display='none';
+  if(st)st.textContent='โหมดแอป';
+  return;
+ }
+ if(deferredPwaPrompt){
+  btn.style.display='';
+  if(st)st.textContent='';
+ }else{
+  btn.style.display='none';
+  // iOS ไม่มี beforeinstallprompt
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  if(st&&isIOS&&!isStandalonePwa())st.textContent='iOS: แชร์ → เพิ่มไปยังหน้าจอโฮม';
+ }
+}
+async function triggerPwaInstall(){
+ if(!deferredPwaPrompt){
+  alert('ถ้าไม่เห็นปุ่มติดตั้ง ให้ใช้เมนูเบราว์เซอร์:\n• Chrome: ติดตั้งแอป / Add to Home screen\n• iPhone: แชร์ → เพิ่มไปยังหน้าจอโฮม');
+  return;
+ }
+ deferredPwaPrompt.prompt();
+ try{await deferredPwaPrompt.userChoice}catch(e){}
+ deferredPwaPrompt=null;
+ updatePwaUi();
+}
+window.addEventListener('beforeinstallprompt',(e)=>{
+ e.preventDefault();
+ deferredPwaPrompt=e;
+ updatePwaUi();
+});
+window.addEventListener('appinstalled',()=>{
+ deferredPwaPrompt=null;
+ updatePwaUi();
+});
+if('serviceWorker' in navigator){
+ window.addEventListener('load',()=>{
+  navigator.serviceWorker.register('./sw.js').then(()=>{
+   const st=$('#pwaStatus');
+   if(st&&!isStandalonePwa()&&!/iphone|ipad|ipod/i.test(navigator.userAgent)){
+    /* status optional */
+   }
+  }).catch(err=>console.warn('SW register failed',err));
+ });
+}
+
 render();
 </script>
 </body>
